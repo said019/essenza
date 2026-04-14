@@ -114,7 +114,7 @@ export default function Login() {
                             <em style={{ color: '#d1b16b' }}>ritual.</em>
                         </h2>
                         <p className="text-white/55 text-sm font-light leading-relaxed">
-                            Barre · Pilates Mat · Yoga Sculpt
+                            Pilates Reformer Studio
                         </p>
                     </div>
                 </div>

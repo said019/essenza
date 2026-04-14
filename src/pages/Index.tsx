@@ -8,10 +8,28 @@ const navLinks = [
   { label: "Membresías", href: "#membership" },
 ];
 
-const methods = [
-  { title: "Barre", tagline: "Gracia & Precisión", img: "/test1.jpeg", align: "" },
-  { title: "Pilates Mat", tagline: "Fuerza Interior", img: "/test2.jpeg", align: "md:mt-24" },
-  { title: "Yoga Sculpt", tagline: "Equilibrio Tonificado", img: "/test1.jpeg", align: "" },
+const benefits = [
+  {
+    title: "Resistencia Progresiva",
+    tagline: "Control total",
+    desc: "El Reformer permite ajustar la tensión de muelles para trabajar cada músculo con precisión, desde principiantes hasta nivel avanzado.",
+    img: "/test1.jpeg",
+    align: "",
+  },
+  {
+    title: "Core Profundo",
+    tagline: "Fuerza desde adentro",
+    desc: "Cada ejercicio activa el centro del cuerpo. El Reformer revela músculos que el entrenamiento convencional nunca alcanza.",
+    img: "/test2.jpeg",
+    align: "md:mt-24",
+  },
+  {
+    title: "Movilidad & Postura",
+    tagline: "Movimiento sin límites",
+    desc: "El deslizamiento del carro alarga la cadena muscular y corrige la alineación postural, sesión tras sesión.",
+    img: "/test1.jpeg",
+    align: "",
+  },
 ];
 
 const morningSlots = ["07:00 – 08:00", "08:00 – 09:00", "09:00 – 10:00", "10:00 – 11:00"];
@@ -23,8 +41,8 @@ const plans = [
     label: "Primera visita",
     name: "Primera clase",
     price: "$150",
-    unit: "por clase",
-    features: ["Oferta de bienvenida", "Válido 15 días", "Cualquier clase del horario"],
+    unit: "por sesión",
+    features: ["Oferta de bienvenida", "Válido 15 días", "Cualquier horario"],
     cta: "Reservar",
     highlight: false,
   },
@@ -32,36 +50,36 @@ const plans = [
     label: "Drop-in",
     name: "Clase suelta",
     price: "$200",
-    unit: "por clase",
-    features: ["Sin compromiso", "Válido 30 días", "Cualquier clase del horario"],
+    unit: "por sesión",
+    features: ["Sin compromiso", "Válido 30 días", "Cualquier horario"],
     cta: "Comprar",
     highlight: false,
   },
   {
     label: "Pack 4",
-    name: "4 clases",
+    name: "4 sesiones",
     price: "$760",
-    unit: "$190 por clase",
-    features: ["Válido 45 días", "Todas las disciplinas"],
+    unit: "$190 por sesión",
+    features: ["Válido 45 días", "Todos los niveles"],
     cta: "Comprar pack",
     highlight: false,
   },
   {
     label: "Pack 8 · Ritual",
-    name: "8 clases",
+    name: "8 sesiones",
     price: "$1,490",
-    unit: "$186 por clase",
-    features: ["Válido 60 días", "Todas las disciplinas", "Pase de invitado"],
+    unit: "$186 por sesión",
+    features: ["Válido 60 días", "Todos los niveles", "Pase de invitada"],
     cta: "Comprar pack",
     highlight: true,
     badge: "Más popular",
   },
   {
     label: "Pack 12",
-    name: "12 clases",
+    name: "12 sesiones",
     price: "$2,160",
-    unit: "$180 por clase",
-    features: ["Válido 90 días", "Prioridad en reservas", "Todas las disciplinas"],
+    unit: "$180 por sesión",
+    features: ["Válido 90 días", "Prioridad en reservas", "Todos los niveles"],
     cta: "Comprar pack",
     highlight: false,
   },
@@ -92,7 +110,7 @@ const WaveDividerLg = ({ flip = false, color = "#fbf9f6" }: { flip?: boolean; co
   </div>
 );
 
-/* ── Intersection Observer hook for scroll animations ── */
+/* ── Intersection Observer hook ── */
 function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -124,6 +142,7 @@ const Index = () => {
 
   return (
     <main className="min-h-screen bg-surface text-on-surface font-body overflow-hidden">
+
       {/* ═══ Nav ═══ */}
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[92%] max-w-7xl rounded-full px-6 md:px-10 py-4 glass-nav flex justify-between items-center z-50 shadow-lg">
         <Link to="/" className="flex items-center gap-3 group">
@@ -173,7 +192,7 @@ const Index = () => {
         <div className="absolute inset-0 z-[2]">
           <img
             src="/test2.jpeg"
-            alt="Essenza del Flusso studio"
+            alt="Essenza del Flusso — Pilates Reformer studio"
             className="w-full h-full object-cover opacity-40 mix-blend-overlay scale-105"
           />
         </div>
@@ -183,28 +202,28 @@ const Index = () => {
 
         <div className="container mx-auto px-6 relative z-10 text-center md:text-left pt-32 pb-16">
           <span className="font-label text-xs uppercase tracking-[0.4em] text-primary mb-8 block font-semibold animate-fade-in">
-            ✦ Rhythms of Essenza ✦
+            ✦ Pilates Reformer Studio ✦
           </span>
           <h1 className="font-headline text-3xl md:text-5xl lg:text-6xl leading-[0.95] mb-8 max-w-4xl tracking-tight animate-fade-up">
             La <span className="text-gradient-gold italic">esencia</span> del <br />
-            <span className="animate-fade-up delay-200">flujo moderno.</span>
+            <span className="animate-fade-up delay-200">movimiento consciente.</span>
           </h1>
           <p className="font-body text-essenza-secondary text-sm md:text-lg max-w-xl mb-12 leading-relaxed font-light mx-auto md:mx-0 animate-fade-up delay-300 opacity-0">
-            Un santuario donde barre, pilates y yoga convergen en un solo viaje rítmico.
-            Cada movimiento es una meditación, cada respiración una transformación.
+            Un studio de Pilates Reformer donde cada sesión es un ritual de precisión,
+            fuerza y fluidez. Tu cuerpo, en su mejor versión.
           </p>
           <div className="flex flex-col md:flex-row gap-5 md:gap-6 items-center md:items-start animate-fade-up delay-400 opacity-0">
             <Link
               to="/register"
-              className="bg-on-surface text-surface px-8 md:px-10 py-4 md:py-4 rounded-full font-label uppercase tracking-[0.2em] text-[11px] hover:bg-primary transition-all duration-500 shadow-xl ripple-btn"
+              className="bg-on-surface text-surface px-8 md:px-10 py-4 rounded-full font-label uppercase tracking-[0.2em] text-[11px] hover:bg-primary transition-all duration-500 shadow-xl ripple-btn"
             >
-              Comienza tu práctica
+              Reserva tu primera clase
             </Link>
             <a
               href="#method"
-              className="glass-flow px-8 md:px-10 py-4 md:py-4 rounded-full font-label uppercase tracking-[0.2em] text-[11px] hover:border-primary/40"
+              className="glass-flow px-8 md:px-10 py-4 rounded-full font-label uppercase tracking-[0.2em] text-[11px] hover:border-primary/40"
             >
-              Descubrir el flujo →
+              Descubrir el método →
             </a>
           </div>
         </div>
@@ -213,27 +232,34 @@ const Index = () => {
       {/* Wave transition hero → method */}
       <WaveDividerLg color="#fbf9f6" />
 
-      {/* ═══ Our Method ═══ */}
+      {/* ═══ Por qué el Reformer ═══ */}
       <section id="method" ref={methodRef} className="py-24 md:py-40 px-6 bg-surface marble-overlay relative">
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="mb-16 md:mb-24 text-center" data-reveal>
-            <span className="font-label text-xs uppercase tracking-[0.4em] text-primary/70 mb-4 block">Disciplinas</span>
-            <h2 className="font-headline text-3xl md:text-5xl mb-6 font-light">Nuestro Método</h2>
+            <span className="font-label text-xs uppercase tracking-[0.4em] text-primary/70 mb-4 block">El Método</span>
+            <h2 className="font-headline text-3xl md:text-5xl mb-6 font-light">Por qué el Reformer</h2>
             <div className="w-32 h-px bg-gradient-gold mx-auto opacity-60" />
             <p className="text-essenza-secondary max-w-xl mx-auto mt-6 text-base md:text-lg font-light leading-relaxed">
-              Tres caminos, un solo flujo. Cada disciplina complementa las demás en un viaje integral de movimiento consciente.
+              El Pilates Reformer es la evolución del método clásico. Resistencia, control y fluidez
+              en un solo aparato diseñado para transformar tu cuerpo desde adentro.
             </p>
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
-            {methods.map((m, i) => (
-              <div key={m.title} data-reveal className={`group relative flex flex-col items-center opacity-0 translate-y-8 ${m.align}`} style={{ transitionDelay: `${i * 150}ms` }}>
+            {benefits.map((b, i) => (
+              <div
+                key={b.title}
+                data-reveal
+                className={`group relative flex flex-col items-center opacity-0 translate-y-8 ${b.align}`}
+                style={{ transitionDelay: `${i * 150}ms` }}
+              >
                 <div className="relative w-full aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl transition-all duration-700 group-hover:-translate-y-4 group-hover:shadow-[0_32px_80px_rgba(175,139,59,0.2)]">
                   <img
-                    src={m.img}
-                    alt={m.title}
+                    src={b.img}
+                    alt={b.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   {/* Flow line overlay */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-700">
                     <svg className="w-full h-full" viewBox="0 0 400 500" preserveAspectRatio="none">
@@ -245,9 +271,12 @@ const Index = () => {
                   </div>
                   <div className="absolute bottom-10 left-10 right-10">
                     <span className="font-label text-[10px] uppercase tracking-[0.3em] text-primary-fixed-dim mb-2 block">
-                      {m.tagline}
+                      {b.tagline}
                     </span>
-                    <h3 className="font-headline text-2xl md:text-3xl text-surface">{m.title}</h3>
+                    <h3 className="font-headline text-2xl md:text-3xl text-surface">{b.title}</h3>
+                    <p className="text-surface/70 text-xs mt-2 leading-relaxed font-light hidden group-hover:block transition-all duration-500">
+                      {b.desc}
+                    </p>
                   </div>
                 </div>
                 <div className="mt-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0 font-label text-[10px] uppercase tracking-widest text-primary">
@@ -255,6 +284,21 @@ const Index = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* CTA intermedio */}
+          <div className="text-center mt-20 md:mt-32" data-reveal>
+            <div className="inline-flex flex-col items-center gap-6">
+              <p className="font-headline text-xl md:text-2xl font-light italic text-essenza-secondary">
+                "El Reformer no es una máquina — es tu aliado."
+              </p>
+              <Link
+                to="/register"
+                className="bg-on-surface text-surface px-10 py-4 rounded-full font-label text-[11px] uppercase tracking-[0.2em] hover:bg-primary transition-all duration-500 ripple-btn shadow-lg"
+              >
+                Agenda tu sesión introductoria
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -269,7 +313,7 @@ const Index = () => {
             <span className="font-label text-xs uppercase tracking-[0.4em] text-primary/70 mb-4 block">Tu Ritmo</span>
             <h2 className="font-headline text-3xl md:text-5xl mb-6">Horarios</h2>
             <p className="text-essenza-secondary max-w-2xl text-base md:text-lg">
-              Clases de una hora. Elige el bloque que mejor se acomode a tu día — cualquier pase te da acceso a todos.
+              Sesiones de Pilates Reformer de una hora. Elige el bloque que mejor se acomode a tu día.
             </p>
           </div>
 
@@ -294,7 +338,6 @@ const Index = () => {
 
             {/* Especiales */}
             <div data-reveal className="bg-gradient-gold p-8 md:p-10 rounded-3xl text-white shadow-[0_20px_60px_rgba(175,139,59,0.25)] md:scale-[1.02] relative overflow-hidden opacity-0 translate-y-8 breathe-glow">
-              {/* Animated flow overlay */}
               <div className="absolute inset-0 opacity-20">
                 <svg className="w-full h-full" viewBox="0 0 400 400" preserveAspectRatio="none">
                   <path d="M0,200 Q100,150 200,200 T400,200" fill="none" stroke="white" strokeWidth="0.5" opacity="0.5">
@@ -322,7 +365,7 @@ const Index = () => {
                 ))}
               </ul>
               <p className="mt-8 text-xs text-white/85 leading-relaxed relative z-10">
-                Bloques curados con cupos limitados. Reserva con anticipación.
+                Cupos limitados por sesión. Reserva con anticipación.
               </p>
             </div>
 
@@ -346,7 +389,7 @@ const Index = () => {
           </div>
 
           <p className="mt-12 text-center text-xs text-essenza-secondary uppercase tracking-[0.3em]">
-            Lunes a Viernes · Cada clase 60 minutos
+            Lunes a Viernes · Cada sesión 60 minutos · Pilates Reformer
           </p>
         </div>
       </section>
@@ -356,12 +399,9 @@ const Index = () => {
 
       {/* ═══ Membership ═══ */}
       <section id="membership" ref={membershipRef} className="py-24 md:py-40 px-6 relative overflow-hidden">
-        {/* Animated flowing background */}
         <div className="absolute inset-0 flow-gradient opacity-40 z-0" />
         <div className="absolute inset-0 marble-bg z-0" />
         <div className="absolute inset-0 bg-white/80 z-0" />
-
-        {/* Floating blobs */}
         <div className="flow-blob flow-blob-gold w-[350px] h-[350px] top-20 -right-10 z-[1] animate-drift" />
         <div className="flow-blob flow-blob-blue w-[250px] h-[250px] bottom-20 left-10 z-[1] animate-drift-slow" style={{ animationDelay: "-7s" }} />
 
@@ -374,7 +414,7 @@ const Index = () => {
               Commit to Flow
             </h2>
             <p className="font-body text-essenza-secondary max-w-2xl mx-auto text-sm md:text-base font-light">
-              Paga solo las clases que vas a tomar. Cualquiera puede comprar — sin compromisos ni cuotas anuales.
+              Paga solo las sesiones de Reformer que vas a tomar. Sin contratos ni cuotas anuales.
             </p>
           </div>
 
@@ -397,7 +437,6 @@ const Index = () => {
                     </span>
                   </div>
                 )}
-                {/* Animated wave in highlighted card */}
                 {p.highlight && (
                   <div className="absolute inset-0 opacity-15">
                     <svg className="w-full h-full" viewBox="0 0 300 500" preserveAspectRatio="none">
@@ -408,31 +447,19 @@ const Index = () => {
                     </svg>
                   </div>
                 )}
-                <span
-                  className={`font-label text-[10px] uppercase tracking-[0.35em] mb-4 block relative z-10 ${
-                    p.highlight ? "text-white/80" : "text-essenza-secondary"
-                  }`}
-                >
+                <span className={`font-label text-[10px] uppercase tracking-[0.35em] mb-4 block relative z-10 ${p.highlight ? "text-white/80" : "text-essenza-secondary"}`}>
                   {p.label}
                 </span>
                 <h3 className={`font-headline text-2xl md:text-3xl mb-6 relative z-10 ${p.highlight ? "text-white" : ""}`}>
                   {p.name}
                 </h3>
-                <div
-                  className={`text-4xl md:text-5xl font-headline mb-2 relative z-10 ${
-                    p.highlight ? "text-white" : "text-primary"
-                  }`}
-                >
+                <div className={`text-4xl md:text-5xl font-headline mb-2 relative z-10 ${p.highlight ? "text-white" : "text-primary"}`}>
                   {p.price}
                 </div>
                 <div className={`text-[10px] uppercase tracking-widest mb-8 relative z-10 ${p.highlight ? "text-white/70" : "text-essenza-secondary"}`}>
                   {p.unit}
                 </div>
-                <ul
-                  className={`text-sm space-y-3 mb-8 font-light flex-1 relative z-10 ${
-                    p.highlight ? "text-white/90" : "text-essenza-secondary"
-                  }`}
-                >
+                <ul className={`text-sm space-y-3 mb-8 font-light flex-1 relative z-10 ${p.highlight ? "text-white/90" : "text-essenza-secondary"}`}>
                   {p.features.map((f) => (
                     <li key={f}>✦ {f}</li>
                   ))}
@@ -458,20 +485,19 @@ const Index = () => {
 
       {/* ═══ Testimonial ═══ */}
       <section ref={testimonialRef} className="py-32 md:py-48 px-6 bg-surface marble-overlay overflow-hidden text-center relative">
-        {/* Floating accent blob */}
         <div className="flow-blob flow-blob-gold w-[200px] h-[200px] top-10 left-1/4 z-[1] animate-breathe opacity-20" />
 
         <div className="container mx-auto max-w-5xl relative z-10">
           <span data-reveal className="text-primary text-6xl md:text-7xl font-headline opacity-10 leading-none block animate-float-slow opacity-0 translate-y-8">&ldquo;</span>
           <h2 data-reveal className="font-headline text-xl md:text-3xl leading-snug mb-14 italic font-light -mt-6 md:-mt-10 opacity-0 translate-y-8">
-            Essenza no es un entrenamiento; es una{" "}
-            <span className="text-gradient-gold">recalibración</span>. Salgo de cada sesión más alineada, física y mentalmente.
+            Nunca pensé que el Reformer pudiera cambiarme tanto. Mi postura, mi fuerza,{" "}
+            <span className="text-gradient-gold">mi forma de moverme en la vida</span> — todo cambió.
           </h2>
           <div data-reveal className="flex flex-col items-center gap-6 opacity-0 translate-y-8">
             <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-primary/20 p-1 bg-gradient-gold animate-breathe" />
             <div>
-              <p className="font-label text-xs uppercase tracking-[0.3em] font-bold text-primary">Elena Rossi</p>
-              <p className="text-[10px] text-essenza-secondary uppercase tracking-widest mt-1">Miembro desde 2022</p>
+              <p className="font-label text-xs uppercase tracking-[0.3em] font-bold text-primary">Sofia M.</p>
+              <p className="text-[10px] text-essenza-secondary uppercase tracking-widest mt-1">Alumna · 6 meses en el studio</p>
             </div>
           </div>
         </div>
@@ -482,7 +508,6 @@ const Index = () => {
 
       {/* ═══ Footer ═══ */}
       <footer className="w-full py-20 md:py-24 px-6 md:px-12 bg-surface-container-highest relative overflow-hidden">
-        {/* Subtle flow gradient in footer */}
         <div className="absolute inset-0 opacity-30">
           <div className="flow-blob flow-blob-gold w-[200px] h-[200px] bottom-0 right-10 animate-drift-slow" />
         </div>
@@ -516,7 +541,7 @@ const Index = () => {
             ))}
           </div>
           <div className="font-body text-[10px] uppercase tracking-[0.3em] text-essenza-secondary opacity-60 text-center">
-            © {new Date().getFullYear()} Essenza del Flusso. Ritual para el alma.
+            © {new Date().getFullYear()} Essenza del Flusso · Pilates Reformer Studio
           </div>
         </div>
       </footer>
