@@ -428,6 +428,30 @@
   .stagger-children > *:nth-child(6) { animation-delay: 500ms; }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .flow-gradient,
+  .flow-blob,
+  .breathe-glow,
+  .shimmer-border::before,
+  .wave-path,
+  .animate-drift,
+  .animate-drift-slow,
+  .animate-breathe,
+  .animate-flow,
+  .animate-float-slow,
+  .animate-float-medium {
+    animation: none !important;
+  }
+}
+
 @layer utilities {
   .animate-fade-up {
     animation: fadeUp 0.8s ease-out forwards;
