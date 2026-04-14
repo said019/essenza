@@ -1,0 +1,390 @@
+import { useState } from 'react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import api, { getErrorMessage } from '@/lib/api';
+import type { ClassType, ClassLevel } from '@/types/class';
+import { AdminLayout } from '@/components/layout/AdminLayout';
+import { AuthGuard } from '@/components/layout/AuthGuard';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Switch } from '@/components/ui/switch';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from '@/components/ui/table';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+} from '@/components/ui/dialog';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Badge } from '@/components/ui/badge';
+import { useToast } from '@/components/ui/use-toast';
+import { Loader2, Plus, MoreHorizontal, Pencil, RefreshCcw, Trash2 } from 'lucide-react';
+
+// Schema
+const classTypeSchema = z.object({
+    name: z.string().min(2, 'El nombre es requerido'),
+    description: z.string().optional(),
+    level: z.enum(['beginner', 'intermediate', 'advanced', 'all']),
+    durationMinutes: z.coerce.number().int().positive('Debe ser positivo'),
+    maxCapacity: z.coerce.number().int().positive('Debe ser positivo'),
+    totalpassQuota: z.coerce.number().int().min(0, 'No puede ser negativo').default(0),
+    wellhubQuota: z.coerce.number().int().min(0, 'No puede ser negativo').default(0),
+    color: z.string().regex(/^#[0-9A-F]{6}$/i, 'Color hexadecimal requerido (ej. #FF0000)'), // Simple hex regex
+    isActive: z.boolean().default(true),
+});
+
+type ClassTypeForm = z.infer<typeof classTypeSchema>;
+
+export default function ClassTypesList() {
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [editingType, setEditingType] = useState<ClassType | null>(null);
+    const { toast } = useToast();
+    const queryClient = useQueryClient();
+
+    const { register, handleSubmit, reset, setValue, formState: { errors, isSubmitting } } = useForm<ClassTypeForm>({
+        resolver: zodResolver(classTypeSchema),
+        defaultValues: {
+            level: 'all',
+            durationMinutes: 60,
+            maxCapacity: 8,
+            totalpassQuota: 0,
+            wellhubQuota: 0,
+            color: '#000000',
+            isActive: true,
+        },
+    });
+
+    const { data: classTypes, isLoading } = useQuery<ClassType[]>({
+        queryKey: ['class-types'],
+        queryFn: async () => {
+            const { data } = await api.get('/class-types?all=true');
+            return data;
+        },
+    });
+
+    const createMutation = useMutation({
+        mutationFn: async (data: any) => {
+            return await api.post('/class-types', data);
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['class-types'] });
+            toast({ title: 'Tipo de clase creado', description: 'Configuración guardada.' });
+            setIsDialogOpen(false);
+            reset();
+        },
+        onError: (error) => {
+            toast({ variant: 'destructive', title: 'Error', description: getErrorMessage(error) });
+        },
+    });
+
+    const updateMutation = useMutation({
+        mutationFn: async ({ id, data }: { id: string; data: any }) => {
+            return await api.put(`/class-types/${id}`, data);
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['class-types'] });
+            toast({ title: 'Tipo de clase actualizado', description: 'Cambios guardados exitosamente.' });
+            setIsDialogOpen(false);
+            setEditingType(null);
+            reset();
+        },
+        onError: (error) => {
+            toast({ variant: 'destructive', title: 'Error', description: getErrorMessage(error) });
+        },
+    });
+
+    const deleteMutation = useMutation({
+        mutationFn: async (id: string) => {
+            return await api.delete(`/class-types/${id}`);
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['class-types'] });
+            toast({ title: 'Desactivado', description: 'El tipo de clase ha sido desactivado.' });
+        },
+        onError: (error) => {
+            toast({ variant: 'destructive', title: 'Error', description: getErrorMessage(error) });
+        },
+    });
+
+    const applyQuotaMutation = useMutation({
+        mutationFn: async (id: string) => {
+            return await api.post(`/class-types/${id}/apply-quotas`);
+        },
+        onSuccess: () => {
+            toast({
+                title: 'Cuotas aplicadas',
+                description: 'Las cuotas se actualizaron en las clases futuras.',
+            });
+        },
+        onError: (error) => {
+            toast({ variant: 'destructive', title: 'Error', description: getErrorMessage(error) });
+        },
+    });
+
+    const onSubmit = (data: ClassTypeForm) => {
+        if (editingType) {
+            updateMutation.mutate({ id: editingType.id, data });
+        } else {
+            createMutation.mutate(data);
+        }
+    };
+
+    const handleEdit = (item: ClassType) => {
+        setEditingType(item);
+        setValue('name', item.name);
+        setValue('description', item.description || '');
+        setValue('level', item.level);
+        setValue('durationMinutes', item.duration_minutes);
+        setValue('maxCapacity', item.max_capacity);
+        setValue('totalpassQuota', item.totalpass_quota || 0);
+        setValue('wellhubQuota', item.wellhub_quota || 0);
+        setValue('color', item.color || '#000000');
+        setValue('isActive', item.is_active);
+        setIsDialogOpen(true);
+    };
+
+    const handleCreate = () => {
+        setEditingType(null);
+        reset();
+        setIsDialogOpen(true);
+    };
+
+    const renderChannelBadge = (label: string, value: number, className?: string) => (
+        <Badge variant={value > 0 ? 'default' : 'secondary'} className={className}>
+            {label}: {value}
+        </Badge>
+    );
+
+    return (
+        <AuthGuard requiredRoles={['admin']}>
+            <AdminLayout>
+                <div className="space-y-6">
+                    <div className="flex justify-between items-center">
+                        <div>
+                            <h1 className="text-2xl font-heading font-bold">Tipos de Clase</h1>
+                            <p className="text-muted-foreground">Define la oferta y formatos de clases.</p>
+                        </div>
+                        <Button onClick={handleCreate}>
+                            <Plus className="mr-2 h-4 w-4" /> Nuevo Tipo
+                        </Button>
+                    </div>
+
+                    <div className="rounded-md border bg-card">
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>Nombre</TableHead>
+                                    <TableHead>Nivel</TableHead>
+                                    <TableHead>Duración</TableHead>
+                                    <TableHead>Capacidad</TableHead>
+                                    <TableHead>Canales</TableHead>
+                                    <TableHead>Color</TableHead>
+                                    <TableHead>Estado</TableHead>
+                                    <TableHead className="text-right">Acciones</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                {isLoading ? (
+                                    <TableRow>
+                                        <TableCell colSpan={8} className="text-center py-8">
+                                            <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
+                                        </TableCell>
+                                    </TableRow>
+                                ) : classTypes?.length === 0 ? (
+                                    <TableRow>
+                                        <TableCell colSpan={8} className="text-center py-8 text-muted-foreground">
+                                            No hay tipos de clase configurados.
+                                        </TableCell>
+                                    </TableRow>
+                                ) : (
+                                    classTypes?.map((item) => (
+                                        <TableRow key={item.id}>
+                                            <TableCell className="font-medium">
+                                                {item.name}
+                                            </TableCell>
+                                            <TableCell className="capitalize">{item.level}</TableCell>
+                                            <TableCell>{item.duration_minutes} min</TableCell>
+                                            <TableCell>{item.max_capacity} pers.</TableCell>
+                                            <TableCell>
+                                                <div className="flex flex-col gap-1">
+                                                    {renderChannelBadge('TP', item.totalpass_quota || 0, 'w-fit')}
+                                                    {renderChannelBadge('WH', item.wellhub_quota || 0, 'w-fit')}
+                                                </div>
+                                            </TableCell>
+                                            <TableCell>
+                                                <div className="flex items-center gap-2">
+                                                    <div
+                                                        className="w-4 h-4 rounded-full border border-border"
+                                                        style={{ backgroundColor: item.color || '#ccc' }}
+                                                    />
+                                                    <span className="text-xs font-mono">{item.color}</span>
+                                                </div>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Badge variant={item.is_active ? 'default' : 'secondary'}>
+                                                    {item.is_active ? 'Activo' : 'Inactivo'}
+                                                </Badge>
+                                            </TableCell>
+                                            <TableCell className="text-right">
+                                                <DropdownMenu>
+                                                    <DropdownMenuTrigger asChild>
+                                                        <Button variant="ghost" className="h-8 w-8 p-0">
+                                                            <span className="sr-only">Abrir menú</span>
+                                                            <MoreHorizontal className="h-4 w-4" />
+                                                        </Button>
+                                                    </DropdownMenuTrigger>
+                                                    <DropdownMenuContent align="end">
+                                                        <DropdownMenuLabel>Acciones</DropdownMenuLabel>
+                                                        <DropdownMenuItem onClick={() => handleEdit(item)}>
+                                                            <Pencil className="mr-2 h-4 w-4" /> Editar
+                                                        </DropdownMenuItem>
+                                                        <DropdownMenuItem onClick={() => applyQuotaMutation.mutate(item.id)}>
+                                                            <RefreshCcw className="mr-2 h-4 w-4" /> Aplicar cuotas
+                                                        </DropdownMenuItem>
+                                                        <DropdownMenuItem
+                                                            className="text-destructive"
+                                                            onClick={() => {
+                                                                if (confirm('¿Desactivar este tipo de clase?')) deleteMutation.mutate(item.id);
+                                                            }}
+                                                        >
+                                                            <Trash2 className="mr-2 h-4 w-4" /> Desactivar
+                                                        </DropdownMenuItem>
+                                                    </DropdownMenuContent>
+                                                </DropdownMenu>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))
+                                )}
+                            </TableBody>
+                        </Table>
+                    </div>
+
+                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                        <DialogContent>
+                            <DialogHeader>
+                                <DialogTitle>{editingType ? 'Editar Tipo' : 'Nuevo Tipo de Clase'}</DialogTitle>
+                                <DialogDescription>Configura los detalles de la clase.</DialogDescription>
+                            </DialogHeader>
+
+                            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                                <div className="space-y-2">
+                                    <Label htmlFor="name">Nombre</Label>
+                                    <Input id="name" {...register('name')} placeholder="Ej. Essenza del Flusso" />
+                                    {errors.name && <p className="text-xs text-destructive">{errors.name.message}</p>}
+                                </div>
+
+                                <div className="space-y-2">
+                                    <Label htmlFor="description">Descripción</Label>
+                                    <Textarea id="description" {...register('description')} rows={2} />
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="duration">Duración (min)</Label>
+                                        <Input type="number" id="duration" {...register('durationMinutes')} />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="capacity">Capacidad Máxima</Label>
+                                        <Input type="number" id="capacity" {...register('maxCapacity')} />
+                                    </div>
+                                </div>
+
+                                <div className="rounded-lg border border-border/60 bg-muted/20 p-4">
+                                    <div className="mb-3">
+                                        <p className="font-medium">Cuotas por plataforma</p>
+                                        <p className="text-sm text-muted-foreground">
+                                            Reserva lugares específicos para TotalPass y Wellhub en cada clase.
+                                        </p>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div className="space-y-2">
+                                            <Label htmlFor="totalpassQuota">TotalPass</Label>
+                                            <Input type="number" id="totalpassQuota" {...register('totalpassQuota')} />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <Label htmlFor="wellhubQuota">Wellhub</Label>
+                                            <Input type="number" id="wellhubQuota" {...register('wellhubQuota')} />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className="space-y-2">
+                                        <Label>Nivel</Label>
+                                        <Select
+                                            onValueChange={(val: any) => setValue('level', val)}
+                                            defaultValue={editingType?.level || 'all'}
+                                        >
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Seleccionar nivel" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="beginner">Principiante</SelectItem>
+                                                <SelectItem value="intermediate">Intermedio</SelectItem>
+                                                <SelectItem value="advanced">Avanzado</SelectItem>
+                                                <SelectItem value="all">Todos los niveles</SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="color">Color (Hex)</Label>
+                                        <div className="flex gap-2">
+                                            <Input id="color" {...register('color')} placeholder="#000000" />
+                                            <div
+                                                className="w-10 h-10 rounded-md border shrink-0"
+                                                style={{ backgroundColor: isDialogOpen ? (document.getElementById('color') as HTMLInputElement)?.value : '#000' }} // Simple preview
+                                            />
+                                        </div>
+                                        {errors.color && <p className="text-xs text-destructive">{errors.color.message}</p>}
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center justify-between space-x-2 border p-3 rounded-md">
+                                    <Label htmlFor="isActive">Activo</Label>
+                                    <Switch id="isActive" {...register('isActive')} />
+                                </div>
+
+                                <DialogFooter>
+                                    <Button type="button" variant="ghost" onClick={() => setIsDialogOpen(false)}>
+                                        Cancelar
+                                    </Button>
+                                    <Button type="submit" disabled={isSubmitting}>
+                                        {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                                        Guardar
+                                    </Button>
+                                </DialogFooter>
+                            </form>
+                        </DialogContent>
+                    </Dialog>
+
+                </div>
+            </AdminLayout>
+        </AuthGuard>
+    );
+}
