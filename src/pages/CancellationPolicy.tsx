@@ -209,10 +209,10 @@ export default function CancellationPolicy() {
                                 <div>
                                     <p className="text-sm font-medium">Teléfono / WhatsApp</p>
                                     <a
-                                        href="tel:+524271007347"
+                                        href="tel:+525574034316"
                                         className="text-sm text-primary hover:underline"
                                     >
-                                        +52 427 100 7347
+                                        +52 55 7403 4316
                                     </a>
                                 </div>
                             </div>

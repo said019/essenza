@@ -192,7 +192,7 @@ const Index = () => {
         </div>
         <Link
           to="/register"
-          className="bg-on-surface text-surface px-6 md:px-8 py-2.5 rounded-full font-label text-xs tracking-widest uppercase shadow-md hover:bg-primary transition-colors duration-300 active:scale-[0.98]"
+          className="bg-primary text-white px-6 md:px-8 py-2.5 rounded-full font-label text-xs tracking-widest uppercase shadow-md hover:bg-essenza-goldLight transition-colors duration-300 active:scale-[0.98]"
         >
           Reservar
         </Link>
@@ -216,7 +216,8 @@ const Index = () => {
         <div className="absolute inset-0 z-[3] bg-gradient-to-b from-transparent via-transparent to-white/40" aria-hidden="true" />
 
         <div className="container mx-auto px-6 relative z-10 text-center md:text-left pt-32 pb-20">
-          <span className="font-label text-[11px] uppercase tracking-[0.4em] text-primary mb-8 block font-semibold">
+          <span className="font-label text-[11px] uppercase tracking-[0.4em] text-primary mb-8 inline-flex items-center gap-3 font-semibold">
+            <img src="/reformer-icon-gold.svg" alt="" className="h-5 w-auto" />
             Pilates Reformer Studio
           </span>
           <h1 className="font-headline font-light text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] mb-8 max-w-4xl tracking-tight">
@@ -230,7 +231,7 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 items-center md:items-start">
             <Link
               to="/register"
-              className="bg-on-surface text-surface px-8 md:px-10 py-4 rounded-full font-label uppercase tracking-[0.2em] text-[11px] hover:bg-primary transition-colors duration-300 shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface min-h-[44px]"
+              className="bg-gradient-gold text-white px-8 md:px-10 py-4 rounded-full font-label uppercase tracking-[0.2em] text-[11px] hover:opacity-90 transition-opacity duration-300 shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface min-h-[44px]"
             >
               Reserva tu primera clase
             </Link>
@@ -250,6 +251,11 @@ const Index = () => {
       <section id="method" ref={methodRef} className="py-24 md:py-40 px-6 bg-surface marble-overlay relative">
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="mb-16 md:mb-24 max-w-3xl mx-auto text-center" data-reveal>
+            <img
+              src="/reformer-icon-gold.svg"
+              alt=""
+              className="h-24 w-auto mx-auto mb-8 opacity-90"
+            />
             <span className="font-label text-[11px] uppercase tracking-[0.4em] text-primary/80 mb-4 block">El Método</span>
             <h2 className="font-headline text-[clamp(2rem,5vw,3.75rem)] mb-6 font-light leading-tight">Por qué el Reformer</h2>
             <p className="text-essenza-secondary text-base md:text-lg font-light leading-relaxed max-w-[60ch] mx-auto">
@@ -423,8 +429,8 @@ const Index = () => {
                   to="/register"
                   className={`block w-full text-center py-3.5 rounded-full font-label text-[10px] uppercase tracking-[0.3em] transition-colors duration-300 min-h-[44px] inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
                     p.highlight
-                      ? "bg-white text-primary hover:bg-on-surface hover:text-white shadow-md focus-visible:ring-white"
-                      : "border border-on-surface/20 text-on-surface hover:bg-on-surface hover:text-surface focus-visible:ring-primary"
+                      ? "bg-white text-primary hover:bg-essenza-cream shadow-md focus-visible:ring-white"
+                      : "border border-primary/30 text-on-surface hover:bg-primary hover:text-white hover:border-primary focus-visible:ring-primary"
                   }`}
                 >
                   {p.cta}

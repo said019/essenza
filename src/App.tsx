@@ -310,7 +310,7 @@ const App = () => (
           </Routes>
           {/* WhatsApp floating button - global */}
           <a
-            href="https://wa.me/524271007347?text=Hola%20Essenza%20Studio%2C%20tengo%20una%20duda"
+            href="https://wa.me/525574034316?text=Hola%20Essenza%20del%20Flusso%2C%20tengo%20una%20duda"
             target="_blank"
             rel="noopener noreferrer"
             className="fixed z-[9999] bg-[#25D366] hover:bg-[#1fb855] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center"
