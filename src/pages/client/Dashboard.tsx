@@ -18,7 +18,6 @@ import {
   Sparkles,
   Wallet as WalletIcon,
   CalendarDays,
-  Play,
   PartyPopper,
 } from 'lucide-react';
 
@@ -114,53 +113,38 @@ export default function ClientDashboard() {
                 daysRemaining={daysRemaining}
               />
 
-              {/* Actions — 2 en móvil, 4 en desktop */}
-              <section className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+              {/* Actions — Reservar grande + Wallet compacto */}
+              <section className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4">
                 <Link
                   to="/app/book"
-                  className="col-span-2 lg:col-span-2 flex items-center justify-between p-5 md:p-6 bg-primary text-white rounded-2xl hover:scale-[1.02] hover:shadow-lg transition-all duration-300 group shadow-md shadow-primary/20"
+                  className="lg:col-span-2 flex items-center justify-between p-6 bg-primary text-white rounded-2xl hover:scale-[1.02] hover:shadow-lg transition-all duration-300 group shadow-md shadow-primary/20"
                 >
                   <div className="text-left">
                     <p className="text-[10px] font-bold tracking-[0.1em] text-primary-fixed-dim mb-1">
                       MOVIMIENTO
                     </p>
-                    <h2 className="text-lg md:text-xl font-headline font-bold">Reservar clase</h2>
+                    <h2 className="text-xl font-headline font-bold">Reservar clase</h2>
                   </div>
-                  <div className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-white/15 flex items-center justify-center group-hover:bg-white/25 transition-colors">
+                  <div className="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center group-hover:bg-white/25 transition-colors">
                     <CalendarDays className="h-5 w-5" />
                   </div>
                 </Link>
 
                 <Link
                   to="/app/wallet"
-                  className="flex flex-col justify-between p-5 md:p-6 bg-surface-container-lowest border border-essenza-outlineVariant/40 text-on-surface rounded-2xl hover:scale-[1.02] hover:border-primary/30 transition-all duration-300 group min-h-[108px]"
+                  className="flex items-center gap-4 p-6 bg-surface-container-lowest border border-essenza-outlineVariant/40 text-on-surface rounded-2xl hover:scale-[1.02] hover:border-primary/30 transition-all duration-300 group"
                 >
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                    <WalletIcon className="h-4 w-4 text-primary" />
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                    <WalletIcon className="h-5 w-5 text-primary" />
                   </div>
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <p className="text-[10px] font-bold tracking-[0.1em] text-primary mb-0.5">
                       BENEFICIOS
                     </p>
-                    <h2 className="text-sm md:text-base font-headline font-bold">WalletClub</h2>
+                    <h2 className="text-base font-headline font-bold">WalletClub</h2>
                     {pointsBalance > 0 && (
                       <p className="text-[10px] text-essenza-secondary mt-0.5">{pointsBalance} pts</p>
                     )}
-                  </div>
-                </Link>
-
-                <Link
-                  to="/app/videos"
-                  className="flex flex-col justify-between p-5 md:p-6 bg-surface-container-lowest border border-essenza-outlineVariant/40 text-on-surface rounded-2xl hover:scale-[1.02] hover:border-primary/30 transition-all duration-300 group min-h-[108px]"
-                >
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                    <Play className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold tracking-[0.1em] text-primary mb-0.5">
-                      BIBLIOTECA
-                    </p>
-                    <h2 className="text-sm md:text-base font-headline font-bold">Videos</h2>
                   </div>
                 </Link>
               </section>
@@ -281,30 +265,6 @@ export default function ClientDashboard() {
                 </Link>
               </div>
             )}
-          </section>
-
-          {/* ═══ Featured asymmetric card ═══ */}
-          <section className="pt-2">
-            <Link
-              to="/app/videos"
-              className="relative block h-64 w-full rounded-tr-[4rem] rounded-bl-[4rem] rounded-tl-2xl rounded-br-2xl overflow-hidden group"
-            >
-              <img
-                src="/test1.jpeg"
-                alt="Pilates Reformer en Essenza del Flusso"
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-on-surface/75 via-on-surface/30 to-transparent" />
-              <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
-                <span className="text-[10px] font-bold tracking-[0.25em] mb-2 inline-flex items-center gap-1.5">
-                  <Sparkles className="h-3 w-3" />
-                  REFORMER FLOW
-                </span>
-                <h3 className="text-xl md:text-2xl font-headline font-bold leading-tight max-w-xs">
-                  Descubre tu librería de clases bajo demanda
-                </h3>
-              </div>
-            </Link>
           </section>
         </div>
       </ClientLayout>
