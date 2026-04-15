@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '@/stores/authStore';
 import {
@@ -29,6 +29,18 @@ interface ClientLayoutProps {
     children: ReactNode;
 }
 
+const navItems = [
+    { href: '/app', label: 'Home', icon: LayoutDashboard },
+    { href: '/app/book', label: 'Reservar', icon: Calendar },
+    { href: '/app/classes', label: 'Mis clases', icon: ClipboardList },
+    { href: '/app/videos', label: 'Videos', icon: Play },
+    { href: '/app/events', label: 'Eventos', icon: PartyPopper },
+    { href: '/app/wallet', label: 'Wallet', icon: Gift },
+    { href: '/app/orders', label: 'Órdenes', icon: Receipt },
+    { href: '/app/checkout', label: 'Comprar', icon: ShoppingBag },
+];
+
+// Mobile bottom bar — 5 most important
 const bottomNavItems = [
     { href: '/app', label: 'Home', icon: LayoutDashboard },
     { href: '/app/book', label: 'Reservar', icon: Calendar },
@@ -50,15 +62,18 @@ export function ClientLayout({ children }: ClientLayoutProps) {
     const getInitials = (name: string) =>
         name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2);
 
+    const isActive = (href: string) =>
+        location.pathname === href || (href !== '/app' && location.pathname.startsWith(`${href}/`));
+
     return (
-        <div className="min-h-screen bg-surface text-on-surface pb-32">
-            {/* ═══ Top App Bar — blurred, transparent ═══ */}
+        <div className="min-h-screen bg-surface text-on-surface pb-32 md:pb-10">
+            {/* ═══ Top App Bar ═══ */}
             <header
-                className="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl transition-colors duration-300"
+                className="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl transition-colors duration-300 border-b border-essenza-outlineVariant/20"
                 style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}
             >
-                <div className="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
-                    <Link to="/app" className="flex items-center gap-3">
+                <div className="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto gap-6">
+                    <Link to="/app" className="flex items-center gap-3 flex-shrink-0">
                         <img
                             src="/essenza-logo.jpeg"
                             alt=""
@@ -69,11 +84,34 @@ export function ClientLayout({ children }: ClientLayoutProps) {
                         </span>
                     </Link>
 
-                    <div className="flex items-center gap-2">
+                    {/* Desktop nav */}
+                    <nav className="hidden md:flex items-center gap-1 flex-1 justify-center">
+                        {navItems.map((item) => {
+                            const Icon = item.icon;
+                            const active = isActive(item.href);
+                            return (
+                                <Link
+                                    key={item.href}
+                                    to={item.href}
+                                    className={cn(
+                                        'flex items-center gap-2 px-3.5 py-2 rounded-full text-sm font-medium transition-colors',
+                                        active
+                                            ? 'bg-primary/10 text-primary'
+                                            : 'text-on-surface/70 hover:bg-primary/5 hover:text-primary'
+                                    )}
+                                >
+                                    <Icon className="h-4 w-4" />
+                                    <span>{item.label}</span>
+                                </Link>
+                            );
+                        })}
+                    </nav>
+
+                    <div className="flex items-center gap-2 flex-shrink-0">
                         <Link
                             to="/app/notifications"
                             aria-label="Notificaciones"
-                            className="p-2 rounded-full text-on-surface/60 hover:text-primary hover:scale-105 transition-all"
+                            className="p-2 rounded-full text-on-surface/60 hover:text-primary hover:bg-primary/5 transition-all"
                         >
                             <Bell className="h-5 w-5" />
                         </Link>
@@ -111,18 +149,6 @@ export function ClientLayout({ children }: ClientLayoutProps) {
                                         <span>Mis Órdenes</span>
                                     </Link>
                                 </DropdownMenuItem>
-                                <DropdownMenuItem asChild>
-                                    <Link to="/app/videos" className="cursor-pointer">
-                                        <Play className="mr-2 h-4 w-4" />
-                                        <span>Videos</span>
-                                    </Link>
-                                </DropdownMenuItem>
-                                <DropdownMenuItem asChild>
-                                    <Link to="/app/events" className="cursor-pointer">
-                                        <PartyPopper className="mr-2 h-4 w-4" />
-                                        <span>Eventos</span>
-                                    </Link>
-                                </DropdownMenuItem>
                                 <DropdownMenuSeparator />
                                 <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-destructive">
                                     <LogOut className="mr-2 h-4 w-4" />
@@ -134,36 +160,34 @@ export function ClientLayout({ children }: ClientLayoutProps) {
                 </div>
             </header>
 
-            {/* ═══ Main Content ═══ */}
-            <main className="pt-24 px-6 max-w-2xl mx-auto">{children}</main>
+            {/* ═══ Main Content — fluido mobile → desktop ═══ */}
+            <main className="pt-24 pb-10 px-4 md:px-8 max-w-2xl md:max-w-7xl mx-auto">{children}</main>
 
-            {/* ═══ Bottom Nav — rounded, blurred ═══ */}
+            {/* ═══ Bottom Nav — solo móvil ═══ */}
             <nav
-                className="fixed bottom-0 left-0 w-full z-50 rounded-t-[2rem] bg-surface/80 backdrop-blur-2xl shadow-[0px_-20px_40px_rgba(175,139,59,0.08)] border-t border-essenza-outlineVariant/30"
+                className="md:hidden fixed bottom-0 left-0 w-full z-50 rounded-t-[2rem] bg-surface/80 backdrop-blur-2xl shadow-[0px_-20px_40px_rgba(175,139,59,0.08)] border-t border-essenza-outlineVariant/30"
                 style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
             >
                 <div className="flex justify-around items-center px-4 pt-2 pb-3 w-full max-w-2xl mx-auto">
                     {bottomNavItems.map((item) => {
                         const Icon = item.icon;
-                        const isActive =
-                            location.pathname === item.href ||
-                            (item.href !== '/app' && location.pathname.startsWith(`${item.href}/`));
+                        const active = isActive(item.href);
                         return (
                             <Link
                                 key={item.href}
                                 to={item.href}
                                 className={cn(
                                     'flex flex-col items-center justify-center min-w-[56px] transition-all duration-300 ease-out relative',
-                                    isActive ? 'text-primary scale-110' : 'text-on-surface/50 hover:text-primary'
+                                    active ? 'text-primary scale-110' : 'text-on-surface/50 hover:text-primary'
                                 )}
                             >
                                 <div
                                     className={cn(
                                         'flex items-center justify-center rounded-full p-2.5 transition-all',
-                                        isActive ? 'bg-primary/10' : 'hover:bg-primary/5'
+                                        active ? 'bg-primary/10' : 'hover:bg-primary/5'
                                     )}
                                 >
-                                    <Icon className="h-5 w-5" strokeWidth={isActive ? 2.5 : 2} />
+                                    <Icon className="h-5 w-5" strokeWidth={active ? 2.5 : 2} />
                                 </div>
                                 <span className="text-[10px] font-medium tracking-wide mt-0.5">{item.label}</span>
                             </Link>
