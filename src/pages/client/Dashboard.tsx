@@ -97,102 +97,69 @@ export default function ClientDashboard() {
             <div className="absolute -top-8 -left-8 w-24 h-24 md:w-40 md:h-40 rounded-full bg-essenza-goldLight/20 blur-2xl pointer-events-none" aria-hidden="true" />
           </section>
 
-          {/* ═══ Desktop 2-col grid · Mobile stack ═══ */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-7">
-            {/* Columna izquierda (2/3 en desktop) */}
-            <div className="lg:col-span-2 space-y-7">
-              <MembershipCard
-                loading={membershipLoading}
-                membership={membership ?? null}
-                isExpiredOrCancelled={isExpiredOrCancelled}
-                isOutOfCredits={isOutOfCredits}
-                classLimit={classLimit}
-                classesUsed={classesUsed}
-                classesRemaining={classesRemaining}
-                usagePercent={usagePercent}
-                daysRemaining={daysRemaining}
-              />
+          {/* ═══ Membership ═══ */}
+          <MembershipCard
+            loading={membershipLoading}
+            membership={membership ?? null}
+            isExpiredOrCancelled={isExpiredOrCancelled}
+            isOutOfCredits={isOutOfCredits}
+            classLimit={classLimit}
+            classesUsed={classesUsed}
+            classesRemaining={classesRemaining}
+            usagePercent={usagePercent}
+            daysRemaining={daysRemaining}
+          />
 
-              {/* Actions — Reservar grande + Wallet compacto */}
-              <section className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4">
-                <Link
-                  to="/app/book"
-                  className="lg:col-span-2 flex items-center justify-between p-6 bg-primary text-white rounded-2xl hover:scale-[1.02] hover:shadow-lg transition-all duration-300 group shadow-md shadow-primary/20"
-                >
-                  <div className="text-left">
-                    <p className="text-[10px] font-bold tracking-[0.1em] text-primary-fixed-dim mb-1">
-                      MOVIMIENTO
-                    </p>
-                    <h2 className="text-xl font-headline font-bold">Reservar clase</h2>
-                  </div>
-                  <div className="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center group-hover:bg-white/25 transition-colors">
-                    <CalendarDays className="h-5 w-5" />
-                  </div>
-                </Link>
+          {/* ═══ Actions — Reservar + WalletClub + Eventos ═══ */}
+          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+            <Link
+              to="/app/book"
+              className="lg:col-span-2 flex items-center justify-between p-6 bg-primary text-white rounded-2xl hover:scale-[1.02] hover:shadow-lg transition-all duration-300 group shadow-md shadow-primary/20"
+            >
+              <div className="text-left">
+                <p className="text-[10px] font-bold tracking-[0.1em] text-primary-fixed-dim mb-1">
+                  MOVIMIENTO
+                </p>
+                <h2 className="text-xl font-headline font-bold">Reservar clase</h2>
+              </div>
+              <div className="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center group-hover:bg-white/25 transition-colors">
+                <CalendarDays className="h-5 w-5" />
+              </div>
+            </Link>
 
-                <Link
-                  to="/app/wallet"
-                  className="flex items-center gap-4 p-6 bg-surface-container-lowest border border-essenza-outlineVariant/40 text-on-surface rounded-2xl hover:scale-[1.02] hover:border-primary/30 transition-all duration-300 group"
-                >
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                    <WalletIcon className="h-5 w-5 text-primary" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-[10px] font-bold tracking-[0.1em] text-primary mb-0.5">
-                      BENEFICIOS
-                    </p>
-                    <h2 className="text-base font-headline font-bold">WalletClub</h2>
-                    {pointsBalance > 0 && (
-                      <p className="text-[10px] text-essenza-secondary mt-0.5">{pointsBalance} pts</p>
-                    )}
-                  </div>
-                </Link>
-              </section>
-            </div>
+            <Link
+              to="/app/wallet"
+              className="flex items-center gap-4 p-6 bg-surface-container-lowest border border-essenza-outlineVariant/40 text-on-surface rounded-2xl hover:scale-[1.02] hover:border-primary/30 transition-all duration-300 group"
+            >
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                <WalletIcon className="h-5 w-5 text-primary" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-[10px] font-bold tracking-[0.1em] text-primary mb-0.5">
+                  BENEFICIOS
+                </p>
+                <h2 className="text-base font-headline font-bold">WalletClub</h2>
+                {pointsBalance > 0 && (
+                  <p className="text-[10px] text-essenza-secondary mt-0.5">{pointsBalance} pts</p>
+                )}
+              </div>
+            </Link>
 
-            {/* Columna derecha (1/3 en desktop) — featured card + eventos */}
-            <div className="space-y-7">
-              <Link
-                to="/app/videos"
-                className="relative block h-56 md:h-full md:min-h-[320px] w-full rounded-tr-[3.5rem] rounded-bl-[3.5rem] rounded-tl-2xl rounded-br-2xl overflow-hidden group"
-              >
-                <img
-                  src="/test1.jpeg"
-                  alt="Pilates Reformer en Essenza del Flusso"
-                  className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-on-surface/85 via-on-surface/40 to-transparent" />
-                <div className="absolute inset-0 flex flex-col justify-end p-7 text-white">
-                  <span className="text-[10px] font-bold tracking-[0.25em] mb-2 inline-flex items-center gap-1.5">
-                    <Sparkles className="h-3 w-3" />
-                    REFORMER FLOW
-                  </span>
-                  <h3 className="text-xl font-headline font-bold leading-tight mb-3">
-                    Biblioteca de clases bajo demanda
-                  </h3>
-                  <span className="text-xs font-semibold uppercase tracking-widest inline-flex items-center gap-1 text-white/90 group-hover:gap-2 transition-all">
-                    Explorar <ChevronRight className="h-3.5 w-3.5" />
-                  </span>
-                </div>
-              </Link>
-
-              <Link
-                to="/app/events"
-                className="flex items-center gap-4 p-5 bg-surface-container-lowest border border-essenza-outlineVariant/40 rounded-2xl hover:border-primary/30 transition-all group"
-              >
-                <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                  <PartyPopper className="h-5 w-5 text-primary" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-[10px] font-bold tracking-[0.1em] text-primary mb-0.5">
-                    AGENDA
-                  </p>
-                  <h2 className="text-sm font-headline font-bold">Eventos especiales</h2>
-                </div>
-                <ChevronRight className="h-4 w-4 text-essenza-secondary flex-shrink-0" />
-              </Link>
-            </div>
-          </div>
+            <Link
+              to="/app/events"
+              className="flex items-center gap-4 p-6 bg-surface-container-lowest border border-essenza-outlineVariant/40 text-on-surface rounded-2xl hover:scale-[1.02] hover:border-primary/30 transition-all duration-300 group"
+            >
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                <PartyPopper className="h-5 w-5 text-primary" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-[10px] font-bold tracking-[0.1em] text-primary mb-0.5">
+                  AGENDA
+                </p>
+                <h2 className="text-base font-headline font-bold">Eventos</h2>
+              </div>
+            </Link>
+          </section>
 
           {/* ═══ Upcoming classes ═══ */}
           <section className="space-y-4">
