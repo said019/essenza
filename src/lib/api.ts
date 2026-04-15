@@ -1,8 +1,12 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import type { ApiError } from '@/types/auth';
 
-// API base URL - change in production
-const API_URL = import.meta.env.VITE_API_URL || 'https://valiant-imagination-production-0462.up.railway.app/api';
+// API base URL — set VITE_API_URL en Railway (production) o en .env.local (dev)
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+
+if (import.meta.env.PROD && !import.meta.env.VITE_API_URL) {
+    console.error('⚠️ VITE_API_URL no está configurado. El frontend está usando localhost — no funcionará en producción.');
+}
 
 // Create axios instance
 const api = axios.create({
