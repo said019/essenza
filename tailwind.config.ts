@@ -15,8 +15,9 @@ export default {
     extend: {
       fontFamily: {
         heading: ["var(--font-heading)", "serif"],
-        headline: ["'Noto Serif'", "serif"],
-        body: ["var(--font-body)", "sans-serif"],
+        headline: ["'Cinzel'", "serif"],
+        signature: ["var(--font-signature)", "cursive"],
+        body: ["var(--font-body)", "serif"],
         label: ["'Manrope'", "sans-serif"],
       },
       colors: {

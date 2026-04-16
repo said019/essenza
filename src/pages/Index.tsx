@@ -167,7 +167,7 @@ const Index = () => {
             alt=""
             className="h-10 w-10 rounded-full object-cover ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-105"
           />
-          <span className="hidden sm:inline text-xl md:text-2xl font-headline font-light tracking-tight text-on-surface">
+          <span className="hidden sm:inline text-2xl md:text-3xl font-signature text-primary">
             Essenza
           </span>
         </Link>
@@ -216,14 +216,16 @@ const Index = () => {
         <div className="absolute inset-0 z-[3] bg-gradient-to-b from-transparent via-transparent to-white/40" aria-hidden="true" />
 
         <div className="container mx-auto px-6 relative z-10 text-center md:text-left pt-32 pb-20">
-          <span className="font-label text-[11px] uppercase tracking-[0.4em] text-primary mb-8 inline-flex items-center gap-3 font-semibold">
+          <span className="font-label text-[11px] uppercase tracking-[0.4em] text-primary mb-6 inline-flex items-center gap-3 font-semibold">
             <img src="/reformer-icon-gold.svg" alt="" className="h-5 w-auto" />
             Pilates Reformer Studio
           </span>
-          <h1 className="font-headline font-light text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] mb-8 max-w-4xl tracking-tight">
-            La <em className="text-primary not-italic font-normal">esencia</em> del<br />
-            movimiento consciente.
+          <h1 className="font-signature text-[clamp(3rem,9vw,7rem)] leading-[1] mb-4 max-w-4xl text-primary">
+            Essenza Flusso Studio
           </h1>
+          <p className="font-headline text-[clamp(1.25rem,3vw,2rem)] leading-tight mb-8 max-w-3xl tracking-wide uppercase text-on-surface/80">
+            La esencia del movimiento consciente
+          </p>
           <p className="font-body text-essenza-secondary text-base md:text-lg max-w-[55ch] mb-12 leading-relaxed font-light mx-auto md:mx-0">
             Un studio de Pilates Reformer donde cada sesión es un ritual de precisión,
             fuerza y fluidez.
@@ -257,7 +259,7 @@ const Index = () => {
               className="h-24 w-auto mx-auto mb-8 opacity-90"
             />
             <span className="font-label text-[11px] uppercase tracking-[0.4em] text-primary/80 mb-4 block">El Método</span>
-            <h2 className="font-headline text-[clamp(2rem,5vw,3.75rem)] mb-6 font-light leading-tight">Por qué el Reformer</h2>
+            <h2 className="font-signature text-[clamp(2.5rem,6vw,4.5rem)] text-primary mb-6 font-light leading-tight">Por qué el Reformer</h2>
             <p className="text-essenza-secondary text-base md:text-lg font-light leading-relaxed max-w-[60ch] mx-auto">
               La evolución del método clásico. Resistencia, control y fluidez en un solo
               aparato diseñado para transformar el cuerpo desde adentro.
@@ -303,7 +305,7 @@ const Index = () => {
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="mb-16 md:mb-24 max-w-3xl" data-reveal>
             <span className="font-label text-[11px] uppercase tracking-[0.4em] text-primary/80 mb-4 block">Tu Ritmo</span>
-            <h2 className="font-headline text-[clamp(2rem,5vw,3.75rem)] mb-6 leading-tight">Horarios</h2>
+            <h2 className="font-signature text-[clamp(2.5rem,6vw,4.5rem)] text-primary mb-6 leading-tight">Horarios</h2>
             <p className="text-essenza-secondary text-base md:text-lg font-light max-w-[55ch]">
               Sesiones de una hora, de lunes a viernes. Cualquier pase te da acceso a todos los bloques.
             </p>
@@ -383,7 +385,7 @@ const Index = () => {
             <span className="font-label text-[11px] uppercase tracking-[0.4em] text-primary mb-4 block font-semibold">
               Sin anualidad · Sin contrato
             </span>
-            <h2 className="font-headline text-[clamp(2rem,5vw,3.75rem)] mb-6 italic font-light leading-tight">
+            <h2 className="font-signature text-[clamp(2.5rem,6vw,4.5rem)] text-primary mb-6 italic font-light leading-tight">
               Paga por sesión
             </h2>
             <p className="font-body text-essenza-secondary text-base md:text-lg font-light max-w-[55ch] mx-auto">
@@ -448,7 +450,7 @@ const Index = () => {
         <div className="container mx-auto max-w-3xl relative z-10">
           <p
             data-reveal
-            className="opacity-0 translate-y-8 font-headline text-2xl md:text-[2.25rem] leading-snug mb-12 italic font-light text-on-surface"
+            className="opacity-0 translate-y-8 font-body text-2xl md:text-[2.25rem] leading-snug mb-12 italic font-light text-on-surface"
           >
             "Nunca pensé que el Reformer pudiera cambiarme tanto. Mi postura, mi fuerza,
             mi forma de moverme — todo cambió."
@@ -476,8 +478,8 @@ const Index = () => {
               alt=""
               className="h-10 w-10 rounded-full object-cover ring-1 ring-primary/20"
             />
-            <span className="font-headline italic text-lg text-on-surface tracking-tight">
-              Essenza del Flusso
+            <span className="font-signature text-2xl text-primary">
+              Essenza Flusso
             </span>
           </Link>
           <nav className="flex flex-wrap justify-center gap-x-8 gap-y-3" aria-label="Footer">
