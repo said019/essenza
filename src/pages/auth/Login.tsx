@@ -10,6 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Loader2, Mail, Lock, Eye, EyeOff, Share, PlusSquare } from 'lucide-react';
+import { Brand } from '@/components/Brand';
 
 const loginSchema = z.object({
     email: z.string().email('Email inválido'),
@@ -105,9 +106,7 @@ export default function Login() {
 
                     {/* Tagline */}
                     <div className="max-w-sm">
-                        <span className="font-label text-[10px] uppercase tracking-[0.4em] text-essenza-goldLight mb-4 block">
-                            ✦ Essenza del Flusso ✦
-                        </span>
+                        <Brand variant="cinzel" className="text-[11px] text-essenza-goldLight mb-4 block" />
                         <h2 className="font-headline text-white text-3xl font-light leading-snug mb-4">
                             Donde el movimiento<br />
                             se convierte en{' '}
@@ -154,8 +153,8 @@ export default function Login() {
                             </div>
                         </div>
                         <div className="space-y-2">
-                            <div className="inline-flex items-center rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-primary/80">
-                                Essenza del Flusso
+                            <div className="inline-flex items-center rounded-full border border-primary/15 bg-primary/5 px-3 py-1">
+                                <Brand variant="cinzel" className="text-[11px] text-primary/80 font-semibold" />
                             </div>
                             <CardTitle className="text-2xl font-heading text-foreground">Bienvenido</CardTitle>
                             <CardDescription className="text-sm leading-relaxed text-muted-foreground">

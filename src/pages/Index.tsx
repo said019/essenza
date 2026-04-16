@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import { Brand } from "@/components/Brand";
 
 const navLinks = [
   { label: "Método", href: "#method" },
@@ -167,9 +168,7 @@ const Index = () => {
             alt=""
             className="h-10 w-10 rounded-full object-cover ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-105"
           />
-          <span className="hidden sm:inline text-2xl md:text-3xl font-signature text-primary">
-            Essenza
-          </span>
+          <Brand variant="signature" compact className="hidden sm:inline text-2xl md:text-3xl" />
         </Link>
         <div className="hidden md:flex items-center gap-10">
           {navLinks.map((l) => {
@@ -220,8 +219,8 @@ const Index = () => {
             <img src="/reformer-icon-gold.svg" alt="" className="h-5 w-auto" />
             Pilates Reformer Studio
           </span>
-          <h1 className="font-signature text-[clamp(3rem,9vw,7rem)] leading-[1] mb-4 max-w-4xl text-primary">
-            Essenza Flusso Studio
+          <h1 className="mb-4 max-w-4xl">
+            <Brand variant="signature" className="text-[clamp(3rem,9vw,7rem)] leading-[1]" />
           </h1>
           <p className="font-headline text-[clamp(1.25rem,3vw,2rem)] leading-tight mb-8 max-w-3xl tracking-wide uppercase text-on-surface/80">
             La esencia del movimiento consciente
@@ -505,9 +504,7 @@ const Index = () => {
                 alt=""
                 className="h-10 w-10 rounded-full object-cover ring-1 ring-primary/20"
               />
-              <span className="font-signature text-2xl text-primary">
-                Essenza Flusso
-              </span>
+              <Brand variant="signature" className="text-2xl" />
             </Link>
             <p className="font-body text-xs text-essenza-secondary leading-relaxed text-center md:text-left max-w-[240px]">
               C. de Orleans 51, piso 1<br />
@@ -533,7 +530,7 @@ const Index = () => {
             ))}
           </nav>
           <p className="font-body text-[10px] uppercase tracking-[0.3em] text-essenza-secondary/70 text-center md:text-right">
-            © {new Date().getFullYear()} Essenza Flusso Studio
+            © {new Date().getFullYear()} Essenza del Flusso Studio
           </p>
         </div>
       </footer>

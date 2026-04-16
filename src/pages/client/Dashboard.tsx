@@ -20,6 +20,7 @@ import {
   CalendarDays,
   PartyPopper,
 } from 'lucide-react';
+import { Brand } from '@/components/Brand';
 
 interface WalletSummary {
   pointsBalance: number;
@@ -83,9 +84,7 @@ export default function ClientDashboard() {
           {/* ═══ Greeting header ═══ */}
           <section className="relative overflow-hidden rounded-3xl p-7 md:p-10 bg-gradient-to-br from-essenza-cream via-surface-container-lowest to-essenza-surfaceLow border border-primary/10">
             <div className="relative z-10 max-w-2xl">
-              <span className="font-label text-[10px] uppercase tracking-[0.35em] text-primary/80 font-semibold block mb-3">
-                Essenza Flusso Studio
-              </span>
+              <Brand variant="cinzel" className="text-[11px] text-primary/80 font-semibold mb-3 block" />
               <h1 className="font-signature text-5xl md:text-7xl text-primary leading-[1] mb-3">
                 ¡Hola, {firstName}
               </h1>

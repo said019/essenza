@@ -140,7 +140,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-body text-sm text-primary-foreground/50">
-            © 2026 Essenza del Flusso. Todos los derechos reservados.
+            © 2026 Essenza del Flusso Studio. Todos los derechos reservados.
           </p>
           <p className="font-body text-sm text-primary-foreground/50">
             Powered by{" "}

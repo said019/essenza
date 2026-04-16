@@ -11,6 +11,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Loader2, Mail, Lock, Eye, EyeOff, User, Phone, Cake } from 'lucide-react';
+import { Brand } from '@/components/Brand';
 
 const registerSchema = z.object({
     displayName: z.string().min(2, 'El nombre debe tener al menos 2 caracteres'),
@@ -131,8 +132,8 @@ export default function Register() {
                             </div>
                         </div>
                         <div className="space-y-2">
-                            <div className="inline-flex items-center rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-primary/80">
-                                Essenza del Flusso
+                            <div className="inline-flex items-center rounded-full border border-primary/15 bg-primary/5 px-3 py-1">
+                                <Brand variant="cinzel" className="text-[11px] text-primary/80 font-semibold" />
                             </div>
                             <CardTitle className="text-3xl font-heading text-foreground">Crear Cuenta</CardTitle>
                             <CardDescription className="text-sm leading-relaxed text-muted-foreground">

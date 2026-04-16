@@ -24,6 +24,7 @@ import {
     Receipt,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Brand } from '@/components/Brand';
 
 interface ClientLayoutProps {
     children: ReactNode;
@@ -79,9 +80,7 @@ export function ClientLayout({ children }: ClientLayoutProps) {
                             alt=""
                             className="h-9 w-9 rounded-full object-cover ring-1 ring-primary/20"
                         />
-                        <span className="font-signature text-2xl text-primary hidden sm:inline">
-                            Essenza Flusso
-                        </span>
+                        <Brand variant="signature" className="text-2xl hidden sm:inline" />
                     </Link>
 
                     {/* Desktop nav */}

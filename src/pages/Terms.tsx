@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ChevronRight, MapPin } from "lucide-react";
+import { Brand } from "@/components/Brand";
 
 const sections = [
     { id: "aceptacion", title: "1. Aceptación" },
@@ -59,7 +60,7 @@ export default function Terms() {
                     </Link>
                     <div className="flex items-center gap-2">
                         <img src="/essenza-logo.jpeg" alt="" className="h-8 w-8 rounded-full object-cover ring-1 ring-primary/20" />
-                        <span className="hidden sm:inline font-headline italic text-sm text-on-surface">Essenza del Flusso</span>
+                        <Brand variant="signature" className="hidden sm:inline text-xl" />
                     </div>
                 </div>
             </header>
@@ -108,9 +109,7 @@ export default function Terms() {
                     <main className="flex-1 max-w-3xl">
                         <div className="bg-surface-container-lowest rounded-2xl border border-essenza-outlineVariant/40 p-8 lg:p-12 space-y-12">
                             <div className="space-y-3 pb-8 border-b border-essenza-outlineVariant/40">
-                                <span className="font-label text-[11px] uppercase tracking-[0.4em] text-primary font-semibold">
-                                    Essenza del Flusso Studio
-                                </span>
+                                <Brand variant="cinzel" className="text-[11px] text-primary font-semibold" />
                                 <h1 className="font-headline text-4xl md:text-5xl font-light leading-tight">
                                     Términos y Condiciones
                                 </h1>
