@@ -79,8 +79,8 @@ export function ClientLayout({ children }: ClientLayoutProps) {
                             alt=""
                             className="h-9 w-9 rounded-full object-cover ring-1 ring-primary/20"
                         />
-                        <span className="font-headline text-lg font-semibold text-primary tracking-tight hidden sm:inline">
-                            Essenza del Flusso
+                        <span className="font-signature text-2xl text-primary hidden sm:inline">
+                            Essenza Flusso
                         </span>
                     </Link>
 

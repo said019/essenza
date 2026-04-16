@@ -83,13 +83,13 @@ export default function ClientDashboard() {
           {/* ═══ Greeting header ═══ */}
           <section className="relative overflow-hidden rounded-3xl p-7 md:p-10 bg-gradient-to-br from-essenza-cream via-surface-container-lowest to-essenza-surfaceLow border border-primary/10">
             <div className="relative z-10 max-w-2xl">
-              <span className="font-label text-[10px] uppercase tracking-[0.35em] text-primary/80 font-semibold block mb-2">
-                Essenza del Flusso
+              <span className="font-label text-[10px] uppercase tracking-[0.35em] text-primary/80 font-semibold block mb-3">
+                Essenza Flusso Studio
               </span>
-              <h1 className="font-headline text-2xl md:text-4xl font-semibold tracking-tight text-on-surface mb-1.5">
-                ¡Hola, {firstName} <span className="inline-block ml-1">✿</span>
+              <h1 className="font-signature text-5xl md:text-7xl text-primary leading-[1] mb-3">
+                ¡Hola, {firstName}
               </h1>
-              <p className="text-essenza-secondary text-sm md:text-base font-medium">
+              <p className="font-body text-essenza-secondary text-base md:text-lg italic">
                 Es un gran día para mover tu cuerpo.
               </p>
             </div>
@@ -164,7 +164,7 @@ export default function ClientDashboard() {
           {/* ═══ Upcoming classes ═══ */}
           <section className="space-y-4">
             <div className="flex justify-between items-end px-1">
-              <h2 className="text-2xl font-headline font-semibold tracking-tight">
+              <h2 className="font-signature text-4xl md:text-5xl text-primary leading-none">
                 Próximas clases
               </h2>
               <Link
