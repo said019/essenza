@@ -469,19 +469,52 @@ const Index = () => {
 
       <WaveDivider color="#e4e2df" />
 
+      {/* ═══ Ubicación ═══ */}
+      <section className="py-20 md:py-28 px-6 bg-surface marble-overlay relative">
+        <div className="container mx-auto max-w-7xl relative z-10">
+          <div className="text-center mb-12 md:mb-16">
+            <span className="font-label text-[11px] uppercase tracking-[0.4em] text-primary/80 mb-4 block font-semibold">Encuéntranos</span>
+            <h2 className="font-signature text-[clamp(2.5rem,6vw,4.5rem)] text-primary mb-4">
+              Visítanos
+            </h2>
+            <p className="font-body text-essenza-secondary text-base md:text-lg max-w-lg mx-auto">
+              C. de Orleans 51, piso 1, Lomas Estrella 2da Secc,<br />
+              Iztapalapa, 09890 Ciudad de México, CDMX
+            </p>
+          </div>
+          <div className="rounded-3xl overflow-hidden shadow-xl border border-essenza-outlineVariant/30 aspect-video max-h-[450px]">
+            <iframe
+              title="Ubicación de Essenza del Flusso Studio"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.212!2d-99.0756!3d19.3148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce00f0b1fa58c3%3A0x0!2sC.+de+Orleans+51%2C+Lomas+Estrella+2da+Secc%2C+Iztapalapa%2C+09890+Ciudad+de+M%C3%A9xico%2C+CDMX!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx"
+              className="w-full h-full border-0"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ═══ Footer ═══ */}
       <footer className="w-full py-16 md:py-20 px-6 md:px-12 bg-surface-container-highest">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-10 md:gap-6">
-          <Link to="/" className="flex items-center gap-3 justify-center md:justify-start">
-            <img
-              src="/essenza-logo.jpeg"
-              alt=""
-              className="h-10 w-10 rounded-full object-cover ring-1 ring-primary/20"
-            />
-            <span className="font-signature text-2xl text-primary">
-              Essenza Flusso
-            </span>
-          </Link>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-start gap-10 md:gap-6">
+          <div className="flex flex-col items-center md:items-start gap-3">
+            <Link to="/" className="flex items-center gap-3">
+              <img
+                src="/essenza-logo.jpeg"
+                alt=""
+                className="h-10 w-10 rounded-full object-cover ring-1 ring-primary/20"
+              />
+              <span className="font-signature text-2xl text-primary">
+                Essenza Flusso
+              </span>
+            </Link>
+            <p className="font-body text-xs text-essenza-secondary leading-relaxed text-center md:text-left max-w-[240px]">
+              C. de Orleans 51, piso 1<br />
+              Lomas Estrella 2da Secc, Iztapalapa<br />
+              09890 CDMX
+            </p>
+          </div>
           <nav className="flex flex-wrap justify-center gap-x-8 gap-y-3" aria-label="Footer">
             {[
               { label: "Privacidad", to: "/privacy" },
@@ -493,14 +526,14 @@ const Index = () => {
               <Link
                 key={l.label}
                 to={l.to}
-                className="font-body text-[11px] uppercase tracking-[0.3em] text-essenza-secondary hover:text-primary transition-colors duration-300"
+                className="font-label text-[11px] uppercase tracking-[0.3em] text-essenza-secondary hover:text-primary transition-colors duration-300"
               >
                 {l.label}
               </Link>
             ))}
           </nav>
           <p className="font-body text-[10px] uppercase tracking-[0.3em] text-essenza-secondary/70 text-center md:text-right">
-            © {new Date().getFullYear()} Pilates Reformer Studio
+            © {new Date().getFullYear()} Essenza Flusso Studio
           </p>
         </div>
       </footer>
