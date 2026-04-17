@@ -75,7 +75,7 @@ export function ClientLayout({ children }: ClientLayoutProps) {
             >
                 <div className="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto gap-6">
                     <Link to="/app" className="flex items-center flex-shrink-0">
-                        <Brand variant="logo" className="h-14 w-auto mix-blend-multiply" />
+                        <Brand variant="logo" className="h-20 w-auto mix-blend-multiply" />
                     </Link>
 
                     {/* Desktop nav */}
