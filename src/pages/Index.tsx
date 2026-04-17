@@ -220,7 +220,7 @@ const Index = () => {
             Pilates Reformer Studio
           </span>
           <h1 className="mb-4 max-w-4xl">
-            <Brand variant="signature" className="text-[clamp(3rem,9vw,7rem)] leading-[1]" />
+            <Brand variant="signature" className="text-[clamp(3rem,9vw,6rem)] leading-[1.2] pt-4" />
           </h1>
           <p className="font-headline text-[clamp(1.25rem,3vw,2rem)] leading-tight mb-8 max-w-3xl tracking-wide uppercase text-on-surface/80">
             La esencia del movimiento consciente
@@ -258,7 +258,7 @@ const Index = () => {
               className="h-24 w-auto mx-auto mb-8 opacity-90"
             />
             <span className="font-label text-[11px] uppercase tracking-[0.4em] text-primary/80 mb-4 block">El Método</span>
-            <h2 className="font-signature text-[clamp(2.5rem,6vw,4.5rem)] text-primary mb-6 font-light leading-tight">Por qué el Reformer</h2>
+            <h2 className="font-signature text-[clamp(2.5rem,6vw,4.5rem)] text-primary mb-8 font-light leading-snug">Por qué el Reformer</h2>
             <p className="text-essenza-secondary text-base md:text-lg font-light leading-relaxed max-w-[60ch] mx-auto">
               La evolución del método clásico. Resistencia, control y fluidez en un solo
               aparato diseñado para transformar el cuerpo desde adentro.
@@ -304,7 +304,7 @@ const Index = () => {
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="mb-16 md:mb-24 max-w-3xl" data-reveal>
             <span className="font-label text-[11px] uppercase tracking-[0.4em] text-primary/80 mb-4 block">Tu Ritmo</span>
-            <h2 className="font-signature text-[clamp(2.5rem,6vw,4.5rem)] text-primary mb-6 leading-tight">Horarios</h2>
+            <h2 className="font-signature text-[clamp(2.5rem,6vw,4.5rem)] text-primary mb-8 leading-snug">Horarios</h2>
             <p className="text-essenza-secondary text-base md:text-lg font-light max-w-[55ch]">
               Sesiones de una hora, de lunes a viernes. Cualquier pase te da acceso a todos los bloques.
             </p>
@@ -384,7 +384,7 @@ const Index = () => {
             <span className="font-label text-[11px] uppercase tracking-[0.4em] text-primary mb-4 block font-semibold">
               Sin anualidad · Sin contrato
             </span>
-            <h2 className="font-signature text-[clamp(2.5rem,6vw,4.5rem)] text-primary mb-6 italic font-light leading-tight">
+            <h2 className="font-signature text-[clamp(2.5rem,6vw,4.5rem)] text-primary mb-8 italic font-light leading-snug">
               Paga por sesión
             </h2>
             <p className="font-body text-essenza-secondary text-base md:text-lg font-light max-w-[55ch] mx-auto">
@@ -473,7 +473,7 @@ const Index = () => {
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="text-center mb-12 md:mb-16">
             <span className="font-label text-[11px] uppercase tracking-[0.4em] text-primary/80 mb-4 block font-semibold">Encuéntranos</span>
-            <h2 className="font-signature text-[clamp(2.5rem,6vw,4.5rem)] text-primary mb-4">
+            <h2 className="font-signature text-[clamp(2.5rem,6vw,4.5rem)] text-primary mb-6 leading-snug">
               Visítanos
             </h2>
             <p className="font-body text-essenza-secondary text-base md:text-lg max-w-lg mx-auto">

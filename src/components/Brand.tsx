@@ -18,7 +18,7 @@ export function Brand({ className, variant = 'cinzel', compact = false }: BrandP
     return (
       <span
         className={cn(
-          'font-signature text-primary inline-flex items-baseline gap-[0.15em] leading-none',
+          'font-signature text-primary inline-flex items-baseline gap-[0.15em] leading-[1.2]',
           className
         )}
       >
@@ -33,7 +33,7 @@ export function Brand({ className, variant = 'cinzel', compact = false }: BrandP
   return (
     <span
       className={cn(
-        'font-headline inline-flex items-baseline gap-[0.25em] tracking-[0.12em] uppercase leading-none',
+        'font-headline inline-flex items-baseline gap-[0.25em] tracking-[0.12em] uppercase leading-tight',
         className
       )}
     >
