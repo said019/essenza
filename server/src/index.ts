@@ -47,8 +47,19 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
+const allowedOrigins = [
+    'https://essenzaflusso.com.mx',
+    'https://www.essenzaflusso.com.mx',
+    process.env.FRONTEND_URL,
+    'http://localhost:5173',
+    'http://localhost:8080',
+].filter(Boolean) as string[];
+
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+        callback(new Error('Not allowed by CORS'));
+    },
     credentials: true,
 }));
 app.use(express.json({
