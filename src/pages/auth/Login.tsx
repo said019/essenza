@@ -93,15 +93,8 @@ export default function Login() {
                 {/* Contenido sobre imagen */}
                 <div className="relative z-10 flex flex-col justify-between p-12 w-full">
                     {/* Logo */}
-                    <div className="flex items-center gap-3">
-                        <img
-                            src="/essenza-logo.jpeg"
-                            alt="Essenza del Flusso"
-                            className="h-11 w-11 rounded-full object-cover ring-2 ring-white/30"
-                        />
-                        <span className="font-headline text-white text-xl tracking-tighter font-light">
-                            ESSENZA
-                        </span>
+                    <div>
+                        <Brand variant="logo" className="h-20 w-auto brightness-0 invert" />
                     </div>
 
                     {/* Tagline */}

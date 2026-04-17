@@ -64,32 +64,43 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary-foreground/50 flex-shrink-0 mt-0.5" />
                 <a
-                  href="https://maps.google.com/?q=Hermenegildo+Galeana+Int+Local+4+Centro+76803+San+Juan+del+Rio+Qro"
+                  href="https://maps.google.com/?q=C.+de+Orleans+51+Piso+1+Lomas+Estrella+2da+Secc+Iztapalapa+CDMX"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-body text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
                 >
-                  Hermenegildo Galeana Int. Local 4
-                  <br />
-                  Centro, 76803 San Juan del Río, Qro.
+                  C. de Orleans 51, Piso 1<br />
+                  Lomas Estrella 2da Secc<br />
+                  Iztapalapa, CDMX
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary-foreground/50" />
                 <a
-                  href="tel:+525574034316"
+                  href="tel:+525574034312"
                   className="font-body text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
                 >
-                  +52 55 7403 4316
+                  55 7403 4312
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary-foreground/50" />
                 <a
-                  href="mailto:hola@essenza-studio.com.mx"
+                  href="mailto:essenza.flusso@gmail.com"
                   className="font-body text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
                 >
-                  hola@essenza-studio.com.mx
+                  essenza.flusso@gmail.com
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Instagram className="w-5 h-5 text-primary-foreground/50" />
+                <a
+                  href="https://www.instagram.com/essenza.flusso"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-body text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                >
+                  @essenza.flusso
                 </a>
               </li>
             </ul>
