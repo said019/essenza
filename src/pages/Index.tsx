@@ -499,13 +499,8 @@ const Index = () => {
       <footer className="w-full py-16 md:py-20 px-6 md:px-12 bg-surface-container-highest">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-start gap-10 md:gap-6">
           <div className="flex flex-col items-center md:items-start gap-3">
-            <Link to="/" className="flex items-center gap-3">
-              <img
-                src="/essenza-logo.jpeg"
-                alt=""
-                className="h-10 w-10 rounded-full object-cover ring-1 ring-primary/20"
-              />
-              <Brand variant="signature" className="text-2xl" />
+            <Link to="/">
+              <Brand variant="logo" className="h-24 w-auto" />
             </Link>
             <p className="font-body text-xs text-essenza-secondary leading-relaxed text-center md:text-left max-w-[240px]">
               C. de Orleans 51, piso 1<br />
