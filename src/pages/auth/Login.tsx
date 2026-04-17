@@ -146,7 +146,7 @@ export default function Login() {
                 <Card className="relative w-full max-w-md border border-primary/15 bg-[rgba(253,252,248,0.9)] shadow-[0_28px_72px_-36px_rgba(113,127,155,0.38)] backdrop-blur-xl">
                     <CardHeader className="space-y-3 text-center">
                         <div className="flex justify-center">
-                            <Brand variant="logo" className="h-20 w-auto" />
+                            <Brand variant="logo" className="h-20 w-auto mix-blend-multiply" />
                         </div>
                         <div className="space-y-2">
                             <div />

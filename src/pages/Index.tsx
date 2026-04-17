@@ -165,7 +165,7 @@ const Index = () => {
         <Link to="/" className="flex items-center group" aria-label="Essenza del Flusso — inicio">
           <Brand
             variant="logo"
-            className="h-14 w-auto transition-opacity duration-300 group-hover:opacity-80"
+            className="h-14 w-auto mix-blend-multiply transition-opacity duration-300 group-hover:opacity-80"
           />
         </Link>
         <div className="hidden md:flex items-center gap-10">
