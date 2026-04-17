@@ -2,10 +2,11 @@ import { cn } from '@/lib/utils';
 
 interface BrandProps {
   className?: string;
-  /** Usa 'signature' para hero/títulos grandes (BrittanySignature).
+  /** Usa 'logo' para mostrar la imagen SVG oficial del logo.
+   *  Usa 'signature' para hero/títulos grandes (BrittanySignature).
    *  Usa 'cinzel' para UI compacta (Cinzel uppercase con "del" lowercase italic). */
-  variant?: 'signature' | 'cinzel';
-  /** Solo "ESSENZA del FLUSSO" (sin "STUDIO") */
+  variant?: 'signature' | 'cinzel' | 'logo';
+  /** Solo "ESSENZA del FLUSSO" (sin "STUDIO"). Solo aplica en variantes de texto. */
   compact?: boolean;
 }
 
@@ -14,6 +15,17 @@ interface BrandProps {
  * "ESSENZA" y "FLUSSO STUDIO" en mayúsculas; "del" en minúsculas, italic, más chico.
  */
 export function Brand({ className, variant = 'cinzel', compact = false }: BrandProps) {
+  if (variant === 'logo') {
+    return (
+      <img
+        src="/essenza-logo.svg"
+        alt="Essenza del Flusso Studio"
+        className={cn('object-contain', className)}
+        draggable={false}
+      />
+    );
+  }
+
   if (variant === 'signature') {
     return (
       <span

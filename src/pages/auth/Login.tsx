@@ -145,17 +145,11 @@ export default function Login() {
 
                 <Card className="relative w-full max-w-md border border-primary/15 bg-[rgba(253,252,248,0.9)] shadow-[0_28px_72px_-36px_rgba(113,127,155,0.38)] backdrop-blur-xl">
                     <CardHeader className="space-y-3 text-center">
-                        <div className="hidden lg:flex justify-center">
-                            <div className="flex h-16 w-16 items-center justify-center rounded-[1.5rem] border border-white/70 bg-[radial-gradient(circle_at_top,_rgba(253,252,248,0.98),_rgba(243,242,238,0.9)_50%,_rgba(113,127,155,0.16)_100%)] shadow-[0_18px_40px_-20px_rgba(113,127,155,0.34)]">
-                                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-[10px] font-semibold tracking-[0.26em] text-primary-foreground pl-0.5">
-                                    EDF
-                                </div>
-                            </div>
+                        <div className="flex justify-center">
+                            <Brand variant="logo" className="h-20 w-auto" />
                         </div>
                         <div className="space-y-2">
-                            <div className="inline-flex items-center rounded-full border border-primary/15 bg-primary/5 px-3 py-1">
-                                <Brand variant="cinzel" className="text-[11px] text-primary/80 font-semibold" />
-                            </div>
+                            <div />
                             <CardTitle className="text-2xl font-heading text-foreground">Bienvenido</CardTitle>
                             <CardDescription className="text-sm leading-relaxed text-muted-foreground">
                                 Ingresa a tu cuenta para reservar, gestionar tu membresía y seguir tu experiencia.

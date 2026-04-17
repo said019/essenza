@@ -74,13 +74,8 @@ export function ClientLayout({ children }: ClientLayoutProps) {
                 style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}
             >
                 <div className="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto gap-6">
-                    <Link to="/app" className="flex items-center gap-3 flex-shrink-0">
-                        <img
-                            src="/essenza-logo.jpeg"
-                            alt=""
-                            className="h-9 w-9 rounded-full object-cover ring-1 ring-primary/20"
-                        />
-                        <Brand variant="signature" className="text-2xl hidden sm:inline" />
+                    <Link to="/app" className="flex items-center flex-shrink-0">
+                        <Brand variant="logo" className="h-12 w-auto" />
                     </Link>
 
                     {/* Desktop nav */}

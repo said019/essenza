@@ -1,5 +1,6 @@
 import { MapPin, Phone, Mail, Instagram } from "lucide-react";
 import { Link } from 'react-router-dom';
+import { Brand } from "@/components/Brand";
 
 const Footer = () => {
   return (
@@ -8,20 +9,11 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Column */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <img 
-                src="/essenza.jpg" 
-                alt="Essenza del Flusso" 
-                className="h-12 w-12 rounded-full object-cover"
+            <div className="mb-6">
+              <Brand
+                variant="logo"
+                className="h-20 w-auto brightness-0 invert opacity-90"
               />
-              <div className="flex flex-col">
-                <span className="font-heading text-xl font-semibold text-primary-foreground leading-none">
-                  Essenza
-                </span>
-                <span className="text-[10px] font-body text-primary-foreground/60 tracking-[0.2em] uppercase">
-                  Studio
-                </span>
-              </div>
             </div>
             <p className="font-body text-sm text-primary-foreground/70 mb-6">
               Barré, Pilates Mat, Yoga Sculpt y Sculpt en un espacio pensado para el

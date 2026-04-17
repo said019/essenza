@@ -162,13 +162,11 @@ const Index = () => {
 
       {/* ═══ Nav ═══ */}
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[92%] max-w-7xl rounded-full px-6 md:px-10 py-4 glass-nav flex justify-between items-center z-50 shadow-lg">
-        <Link to="/" className="flex items-center gap-3 group" aria-label="Essenza del Flusso — inicio">
-          <img
-            src="/essenza-logo.jpeg"
-            alt=""
-            className="h-10 w-10 rounded-full object-cover ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-105"
+        <Link to="/" className="flex items-center group" aria-label="Essenza del Flusso — inicio">
+          <Brand
+            variant="logo"
+            className="h-14 w-auto transition-opacity duration-300 group-hover:opacity-80"
           />
-          <Brand variant="signature" compact className="hidden sm:inline text-2xl md:text-3xl" />
         </Link>
         <div className="hidden md:flex items-center gap-10">
           {navLinks.map((l) => {
@@ -219,8 +217,11 @@ const Index = () => {
             <img src="/reformer-icon-gold.svg" alt="" className="h-5 w-auto" />
             Pilates Reformer Studio
           </span>
-          <h1 className="mb-4 max-w-4xl">
-            <Brand variant="signature" className="text-[clamp(3rem,9vw,6rem)] leading-[1.2] pt-4" />
+          <h1 className="mb-4 max-w-2xl md:max-w-3xl">
+            <Brand
+              variant="logo"
+              className="w-full max-w-[340px] md:max-w-[520px] mix-blend-multiply"
+            />
           </h1>
           <p className="font-headline text-[clamp(1.25rem,3vw,2rem)] leading-tight mb-8 max-w-3xl tracking-wide uppercase text-on-surface/80">
             La esencia del movimiento consciente
