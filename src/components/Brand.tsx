@@ -18,7 +18,7 @@ export function Brand({ className, variant = 'cinzel', compact = false }: BrandP
   if (variant === 'logo') {
     return (
       <img
-        src="/essenza-logo.svg"
+        src="/essenza-logo.png"
         alt="Essenza del Flusso Studio"
         className={cn('object-contain', className)}
         draggable={false}
