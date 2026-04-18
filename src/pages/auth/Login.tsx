@@ -9,8 +9,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Loader2, Mail, Lock, Eye, EyeOff, Share, PlusSquare } from 'lucide-react';
+import { Loader2, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { Brand } from '@/components/Brand';
+import { InstallAppCard } from '@/components/InstallAppCard';
 
 const loginSchema = z.object({
     email: z.string().email('Email inválido'),
@@ -240,15 +241,8 @@ export default function Login() {
                                 </Link>
                             </p>
 
-                            <div className="sm:hidden mt-2 rounded-2xl border border-primary/10 bg-primary/[0.035] p-3 text-center space-y-1">
-                                <p className="text-xs font-semibold text-foreground/80">
-                                    Instala la app en tu celular
-                                </p>
-                                <p className="text-[11px] text-muted-foreground leading-relaxed">
-                                    <strong>iPhone:</strong> Toca <Share className="inline h-3 w-3 -mt-0.5" /> y luego <em>"Agregar a inicio"</em>
-                                    <br />
-                                    <strong>Android:</strong> Toca <PlusSquare className="inline h-3 w-3 -mt-0.5" /> o el menú y <em>"Instalar app"</em>
-                                </p>
+                            <div className="mt-2">
+                                <InstallAppCard />
                             </div>
                         </CardFooter>
                     </form>

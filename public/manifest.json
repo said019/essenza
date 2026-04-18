@@ -1,24 +1,37 @@
 {
-  "name": "LUM Wellness Club",
-  "short_name": "LUM",
-  "description": "Barré, Pilates, Yoga Sculpt y Sculpt - Reserva tu clase",
+  "name": "Essenza del Flusso Studio",
+  "short_name": "Essenza",
+  "description": "Pilates Reformer, Barre y Yoga — reserva clases, membresías y WalletClub",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#fdfcf8",
-  "theme_color": "#717f9b",
+  "theme_color": "#af8b3b",
   "orientation": "portrait",
   "icons": [
     {
       "src": "/essenza-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/essenza-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "/essenza-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/essenza-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
