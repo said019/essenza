@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { Brand } from "@/components/Brand";
+import { ClassesCalendarPreview } from "@/components/landing/ClassesCalendarPreview";
 
 const navLinks = [
   { label: "Método", href: "#method" },
@@ -372,6 +373,8 @@ const Index = () => {
           </p>
         </div>
       </section>
+
+      <ClassesCalendarPreview />
 
       <WaveDividerLg flip color="#f5f3f0" />
 
