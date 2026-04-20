@@ -6,6 +6,7 @@ import { sendBookingConfirmation, sendCancellationNotice, sendWhatsAppMessage } 
 import { notifyAllUserDevices } from '../lib/apple-wallet.js';
 import { upsertGoogleLoyaltyObject } from '../lib/google-wallet.js';
 import { syncPartnerAvailability } from '../lib/partners.js';
+import { evaluateCancellation } from '../lib/cancellation-policy.js';
 
 const router = Router();
 
@@ -556,17 +557,13 @@ router.get('/:id/cancel-preview', authenticate, async (req: Request, res: Respon
             [booking.class_id]
         );
 
-        const now = new Date();
         const dateStr = classInfo.date instanceof Date
             ? classInfo.date.toISOString().split('T')[0]
             : classInfo.date;
-        const timeStr = classInfo.start_time.substring(0, 5);
-        // DB stores local Mexico City times, append offset
-        const classDateTime = new Date(`${dateStr}T${timeStr}:00-06:00`);
-        const hoursUntilClass = (classDateTime.getTime() - now.getTime()) / (1000 * 60 * 60);
-
-        const CANCELLATION_WINDOW_HOURS = 5;
-        const isWithinWindow = hoursUntilClass >= CANCELLATION_WINDOW_HOURS;
+        const { requiredHours, hoursUntilClass, isWithinWindow } = evaluateCancellation(
+            dateStr,
+            classInfo.start_time
+        );
 
         let willRefund = false;
         let cancellationsUsed = 0;
@@ -578,7 +575,7 @@ router.get('/:id/cancel-preview', authenticate, async (req: Request, res: Respon
             reason = 'Admin siempre obtiene reembolso';
         } else if (!isWithinWindow) {
             willRefund = false;
-            reason = `Faltan menos de ${CANCELLATION_WINDOW_HOURS} horas para la clase. No se reembolsará el crédito.`;
+            reason = `Las clases ${requiredHours === 10 ? 'antes de mediodía' : 'de la tarde'} requieren ${requiredHours}h de anticipación para reembolso. No se reembolsará el crédito.`;
         } else if (booking.membership_id) {
             const membership = await queryOne(
                 `SELECT cancellations_used, cancellation_limit FROM memberships WHERE id = $1`,
@@ -648,24 +645,14 @@ router.post('/:id/cancel', authenticate, async (req: Request, res: Response) => 
             [booking.class_id]
         );
 
-        // Logic for refunding credit - check cancellation policy time window
-        // Use Mexico City time for comparison since DB stores local times
-        const now = new Date();
+        // Política de cancelación: 10h si clase <12:00, 6h si clase ≥12:00
         const dateStr = classInfo.date instanceof Date
             ? classInfo.date.toISOString().split('T')[0]
             : classInfo.date;
-        const timeStr = classInfo.start_time.substring(0, 5);
-
-        // Construct class datetime in Mexico City timezone
-        // DB stores local Mexico City times, so we append the offset
-        const classDateTime = new Date(`${dateStr}T${timeStr}:00-06:00`);
-
-        // Calculate hours until class
-        const hoursUntilClass = (classDateTime.getTime() - now.getTime()) / (1000 * 60 * 60);
-
-        // Cancellation policy: 5 hours minimum notice
-        const CANCELLATION_WINDOW_HOURS = 5;
-        const isWithinWindow = hoursUntilClass >= CANCELLATION_WINDOW_HOURS;
+        const { hoursUntilClass, isWithinWindow } = evaluateCancellation(
+            dateStr,
+            classInfo.start_time
+        );
 
         // Note: We allow cancellation even outside the window, but without refund
 
@@ -738,7 +725,7 @@ router.post('/:id/cancel', authenticate, async (req: Request, res: Response) => 
                 }
             } else {
                 shouldRefund = false;
-                refundReason = `Fuera de tiempo (menos de ${CANCELLATION_WINDOW_HOURS}h)`;
+                refundReason = `Fuera de ventana de cancelación (${Math.round(hoursUntilClass * 10) / 10}h restantes)`;
             }
         }
 

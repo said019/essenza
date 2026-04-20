@@ -146,9 +146,10 @@ export function CancelBookingDialog({
             <div className="rounded-lg bg-muted/30 p-3 text-[11px] text-muted-foreground leading-relaxed">
               <p className="font-medium text-xs mb-1">Política de cancelación:</p>
               <ul className="list-disc list-inside space-y-0.5">
-                <li>Cancelar con <strong>+5 horas</strong> de anticipación = reembolso de crédito</li>
-                <li>Máximo <strong>2 cancelaciones</strong> con reembolso por plan</li>
-                <li>Cancelar con <strong>menos de 5 horas</strong> = sin reembolso</li>
+                <li>Clases <strong>antes de 12:00 PM</strong>: mínimo <strong>10 h</strong> de anticipación</li>
+                <li>Clases <strong>desde las 12:00 PM</strong>: mínimo <strong>6 h</strong> de anticipación</li>
+                <li>Fuera de tiempo o inasistencia = <strong>se pierde la clase</strong></li>
+                <li>Tolerancia máxima de llegada: <strong>8 minutos</strong></li>
               </ul>
             </div>
           </div>
