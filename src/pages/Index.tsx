@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import { MapPin, Mail, AtSign, MessageCircle } from "lucide-react";
 import { Brand } from "@/components/Brand";
 import { ClassesCalendarPreview } from "@/components/landing/ClassesCalendarPreview";
 
@@ -480,20 +481,97 @@ const Index = () => {
             <h2 className="font-signature text-[clamp(2.5rem,6vw,4.5rem)] text-primary mb-6 leading-snug">
               Visítanos
             </h2>
-            <p className="font-body text-essenza-secondary text-base md:text-lg max-w-lg mx-auto">
-              C. de Orleans 51, piso 1, Lomas Estrella 2da Secc,<br />
-              Iztapalapa, 09890 Ciudad de México, CDMX
-            </p>
           </div>
-          <div className="rounded-3xl overflow-hidden shadow-xl border border-essenza-outlineVariant/30 aspect-video max-h-[450px]">
-            <iframe
-              title="Ubicación de Essenza del Flusso Studio"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.212!2d-99.0756!3d19.3148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce00f0b1fa58c3%3A0x0!2sC.+de+Orleans+51%2C+Lomas+Estrella+2da+Secc%2C+Iztapalapa%2C+09890+Ciudad+de+M%C3%A9xico%2C+CDMX!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx"
-              className="w-full h-full border-0"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-8 lg:gap-10 items-stretch">
+            {/* Contact info card */}
+            <div className="rounded-3xl border border-essenza-outlineVariant/40 bg-surface-container-lowest p-8 md:p-10 flex flex-col justify-center gap-6">
+              <div className="flex items-start gap-4">
+                <span className="flex-shrink-0 inline-flex items-center justify-center h-11 w-11 rounded-full bg-primary/10 text-primary">
+                  <MapPin className="h-5 w-5" strokeWidth={1.5} />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-primary/80 font-semibold mb-1">Dirección</p>
+                  <a
+                    href="https://maps.google.com/?q=C.+de+Orleans+51+Piso+1+Lomas+Estrella+2da+Secc+Iztapalapa+CDMX"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-body text-sm md:text-base text-foreground leading-relaxed hover:text-primary transition-colors"
+                  >
+                    C. de Orleans 51, Piso 1<br />
+                    Lomas Estrella 2da Secc<br />
+                    Iztapalapa, 09890 CDMX
+                  </a>
+                </div>
+              </div>
+
+              <div className="h-px bg-essenza-outlineVariant/30" />
+
+              <div className="flex items-start gap-4">
+                <span className="flex-shrink-0 inline-flex items-center justify-center h-11 w-11 rounded-full bg-primary/10 text-primary">
+                  <Mail className="h-5 w-5" strokeWidth={1.5} />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-primary/80 font-semibold mb-1">Correo</p>
+                  <a
+                    href="mailto:essenza.flusso@gmail.com"
+                    className="font-body text-sm md:text-base text-foreground hover:text-primary transition-colors break-all"
+                  >
+                    essenza.flusso@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="h-px bg-essenza-outlineVariant/30" />
+
+              <div className="flex items-start gap-4">
+                <span className="flex-shrink-0 inline-flex items-center justify-center h-11 w-11 rounded-full bg-primary/10 text-primary">
+                  <MessageCircle className="h-5 w-5" strokeWidth={1.5} />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-primary/80 font-semibold mb-1">WhatsApp</p>
+                  <a
+                    href="https://wa.me/525574034312"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-body text-sm md:text-base text-foreground hover:text-primary transition-colors"
+                  >
+                    55 7403 4312
+                  </a>
+                </div>
+              </div>
+
+              <div className="h-px bg-essenza-outlineVariant/30" />
+
+              <div className="flex items-start gap-4">
+                <span className="flex-shrink-0 inline-flex items-center justify-center h-11 w-11 rounded-full bg-primary/10 text-primary">
+                  <AtSign className="h-5 w-5" strokeWidth={1.5} />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-primary/80 font-semibold mb-1">Instagram</p>
+                  <a
+                    href="https://www.instagram.com/essenza.flusso"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-body text-sm md:text-base text-foreground hover:text-primary transition-colors"
+                  >
+                    @essenza.flusso
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Map */}
+            <div className="rounded-3xl overflow-hidden shadow-xl border border-essenza-outlineVariant/30 min-h-[360px] lg:min-h-0">
+              <iframe
+                title="Ubicación de Essenza del Flusso Studio"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.212!2d-99.0756!3d19.3148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce00f0b1fa58c3%3A0x0!2sC.+de+Orleans+51%2C+Lomas+Estrella+2da+Secc%2C+Iztapalapa%2C+09890+Ciudad+de+M%C3%A9xico%2C+CDMX!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx"
+                className="w-full h-full border-0"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
         </div>
       </section>
