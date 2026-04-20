@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(psql -h monorail.proxy.rlwy.net -p 37392 -U postgres -d railway -c \"SELECT channel, sandbox, base_url, booking_base_url FROM platform_credentials;\")"
-    ]
-  }
-}

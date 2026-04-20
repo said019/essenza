@@ -24,6 +24,13 @@ server/.env.*
 .vscode/*
 !.vscode/extensions.json
 .idea
+.claude/
+
+# Source assets (copiados a public/ al usarlos)
+/logo sin fondo.png
+/129137.svg
+/Essenza_del_Flusso_Studio_logo.png
+/file_*.png
 .DS_Store
 *.suo
 *.ntvs*
