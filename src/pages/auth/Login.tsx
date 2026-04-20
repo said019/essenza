@@ -125,18 +125,6 @@ export default function Login() {
                     <div className="absolute right-[-7rem] bottom-24 h-64 w-64 rounded-full bg-primary/8 blur-3xl" />
                 </div>
 
-                {/* Logo solo en mobile */}
-                <div className="lg:hidden flex items-center gap-3 mb-8">
-                    <img
-                        src="/essenza-logo.jpeg"
-                        alt="Essenza del Flusso"
-                        className="h-10 w-10 rounded-full object-cover ring-1 ring-primary/20"
-                    />
-                    <span className="font-headline text-xl tracking-tighter font-light text-on-surface">
-                        ESSENZA
-                    </span>
-                </div>
-
                 <Card className="relative w-full max-w-md border border-primary/15 bg-[rgba(253,252,248,0.9)] shadow-[0_28px_72px_-36px_rgba(113,127,155,0.38)] backdrop-blur-xl">
                     <CardHeader className="space-y-3 text-center">
                         <div className="flex justify-center">
