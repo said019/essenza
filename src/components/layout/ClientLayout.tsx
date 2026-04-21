@@ -155,7 +155,7 @@ export function ClientLayout({ children }: ClientLayoutProps) {
             </header>
 
             {/* ═══ Main Content — fluido mobile → desktop ═══ */}
-            <main className="pt-24 pb-10 px-4 md:px-8 max-w-2xl md:max-w-7xl mx-auto">{children}</main>
+            <main className="pt-32 md:pt-36 pb-10 px-4 md:px-8 max-w-2xl md:max-w-7xl mx-auto">{children}</main>
 
             {/* ═══ Bottom Nav — solo móvil ═══ */}
             <nav
