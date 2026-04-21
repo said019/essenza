@@ -5,9 +5,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, Check, CreditCard, Building2, AlertCircle, Copy } from 'lucide-react';
+import { Loader2, Check, CreditCard, Building2, AlertCircle, Copy, Upload, X, FileImage } from 'lucide-react';
 import api from '@/lib/api';
 
 interface Plan {
@@ -24,13 +25,29 @@ interface Plan {
 }
 
 type PaymentMethod = 'card' | 'transfer';
-type Step = 'select-plan' | 'payment-method' | 'processing';
+type Step = 'select-plan' | 'payment-method' | 'upload-proof' | 'processing';
+
+const MAX_FILE_BYTES = 5 * 1024 * 1024; // 5 MB
+const ACCEPTED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'];
+
+function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
 
 export function PurchaseFlow() {
   const [step, setStep] = useState<Step>('select-plan');
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('card');
   const [isProcessing, setIsProcessing] = useState(false);
+  const [transferOrderId, setTransferOrderId] = useState<string | null>(null);
+  const [proofFile, setProofFile] = useState<File | null>(null);
+  const [proofPreview, setProofPreview] = useState<string | null>(null);
+  const [transferReference, setTransferReference] = useState('');
   const { toast } = useToast();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -97,6 +114,66 @@ export function PurchaseFlow() {
     },
   });
 
+  // Para transferencia: crea una orden pendiente y avanza a subir comprobante
+  const createOrderMutation = useMutation({
+    mutationFn: async (planId: string) => {
+      const response = await api.post('/orders', {
+        plan_id: planId,
+        payment_method: 'transfer',
+      });
+      return response.data;
+    },
+    onSuccess: (data) => {
+      setTransferOrderId(data.id);
+      setIsProcessing(false);
+      setStep('upload-proof');
+    },
+    onError: (error: any) => {
+      setIsProcessing(false);
+      const existingId = error.response?.data?.existingOrderId;
+      if (existingId) {
+        setTransferOrderId(existingId);
+        setStep('upload-proof');
+        toast({
+          title: 'Continúa con tu orden pendiente',
+          description: 'Ya tenías una orden para este plan. Sube el comprobante para activarla.',
+        });
+        return;
+      }
+      toast({
+        variant: 'destructive',
+        title: 'No se pudo crear la orden',
+        description: error.response?.data?.error || 'Intenta nuevamente.',
+      });
+    },
+  });
+
+  const uploadProofMutation = useMutation({
+    mutationFn: async ({ orderId, file, reference }: { orderId: string; file: File; reference: string }) => {
+      const file_data = await fileToBase64(file);
+      const response = await api.post(`/orders/${orderId}/upload-proof`, {
+        file_data,
+        file_name: file.name,
+        file_type: file.type,
+        transfer_reference: reference || undefined,
+      });
+      return response.data;
+    },
+    onSuccess: () => {
+      setIsProcessing(false);
+      queryClient.invalidateQueries({ queryKey: ['my-orders'] });
+      setStep('processing');
+    },
+    onError: (error: any) => {
+      setIsProcessing(false);
+      toast({
+        variant: 'destructive',
+        title: 'Error al subir comprobante',
+        description: error.response?.data?.error || 'Intenta con otra imagen.',
+      });
+    },
+  });
+
   const handlePlanSelect = (plan: Plan) => {
     setSelectedPlan(plan);
     setStep('payment-method');
@@ -112,11 +189,54 @@ export function PurchaseFlow() {
         title: 'Procesando pago...',
         description: 'Por favor espera mientras procesamos tu tarjeta.',
       });
+      await createMembershipMutation.mutateAsync({
+        planId: selectedPlan.id,
+        paymentMethod,
+      });
+    } else {
+      // Transferencia → crea orden y ve a paso de subir comprobante
+      await createOrderMutation.mutateAsync(selectedPlan.id);
+    }
+  };
+
+  const handleProofFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!ACCEPTED_FILE_TYPES.includes(file.type)) {
+      toast({
+        variant: 'destructive',
+        title: 'Formato no válido',
+        description: 'Usa una imagen (JPG/PNG/WebP) o PDF.',
+      });
+      return;
+    }
+    if (file.size > MAX_FILE_BYTES) {
+      toast({
+        variant: 'destructive',
+        title: 'Archivo muy grande',
+        description: 'El máximo es 5 MB.',
+      });
+      return;
     }
 
-    await createMembershipMutation.mutateAsync({
-      planId: selectedPlan.id,
-      paymentMethod,
+    setProofFile(file);
+    if (file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = () => setProofPreview(reader.result as string);
+      reader.readAsDataURL(file);
+    } else {
+      setProofPreview(null);
+    }
+  };
+
+  const handleProofSubmit = async () => {
+    if (!transferOrderId || !proofFile) return;
+    setIsProcessing(true);
+    await uploadProofMutation.mutateAsync({
+      orderId: transferOrderId,
+      file: proofFile,
+      reference: transferReference.trim(),
     });
   };
 
@@ -333,9 +453,127 @@ export function PurchaseFlow() {
           ) : paymentMethod === 'card' ? (
             'Pagar Ahora'
           ) : (
-            'Ya realicé el pago'
+            'Continuar y subir comprobante'
           )}
         </Button>
+      </div>
+    );
+  }
+
+  // Paso 3a: Subir comprobante (solo transferencia)
+  if (step === 'upload-proof' && transferOrderId) {
+    return (
+      <div className="max-w-lg mx-auto space-y-6">
+        <div className="text-center">
+          <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 mb-3">
+            <Upload className="h-6 w-6 text-primary" />
+          </div>
+          <h2 className="text-2xl font-heading font-bold mb-1">Sube tu comprobante</h2>
+          <p className="text-sm text-muted-foreground font-body">
+            Adjunta tu comprobante de transferencia para que el equipo active tus créditos.
+          </p>
+        </div>
+
+        <div className="rounded-xl border border-dashed border-primary/30 bg-primary/[0.03] p-4 text-sm">
+          <p className="font-medium mb-1">Plan: {selectedPlan?.name}</p>
+          <p className="text-muted-foreground text-xs">
+            Monto: ${selectedPlan?.price} {selectedPlan?.currency || 'MXN'}
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          <Label htmlFor="proof-file" className="text-sm font-medium">
+            Comprobante (imagen o PDF, máx 5 MB)
+          </Label>
+
+          {!proofFile ? (
+            <label
+              htmlFor="proof-file"
+              className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-muted-foreground/25 bg-muted/20 p-8 text-center cursor-pointer hover:border-primary/50 hover:bg-primary/5 transition-colors"
+            >
+              <Upload className="h-8 w-8 text-muted-foreground" />
+              <p className="text-sm font-medium">Toca para seleccionar</p>
+              <p className="text-xs text-muted-foreground">JPG, PNG, WebP o PDF</p>
+              <input
+                id="proof-file"
+                type="file"
+                className="hidden"
+                accept="image/jpeg,image/png,image/webp,application/pdf"
+                onChange={handleProofFileChange}
+              />
+            </label>
+          ) : (
+            <div className="rounded-xl border bg-card p-3 space-y-3">
+              {proofPreview ? (
+                <img
+                  src={proofPreview}
+                  alt="Vista previa del comprobante"
+                  className="w-full max-h-72 object-contain rounded-lg bg-muted/40"
+                />
+              ) : (
+                <div className="flex items-center gap-3 p-4 bg-muted/30 rounded-lg">
+                  <FileImage className="h-10 w-10 text-primary/60 flex-shrink-0" />
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium truncate">{proofFile.name}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {(proofFile.size / 1024).toFixed(0)} KB
+                    </p>
+                  </div>
+                </div>
+              )}
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  setProofFile(null);
+                  setProofPreview(null);
+                }}
+                className="w-full"
+              >
+                <X className="h-4 w-4 mr-2" />
+                Cambiar archivo
+              </Button>
+            </div>
+          )}
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="transfer-ref" className="text-sm font-medium">
+            Referencia (opcional)
+          </Label>
+          <Input
+            id="transfer-ref"
+            type="text"
+            placeholder="Ej. 00012345"
+            value={transferReference}
+            onChange={(e) => setTransferReference(e.target.value)}
+            maxLength={40}
+          />
+          <p className="text-xs text-muted-foreground">
+            Número de referencia o clave de rastreo de tu transferencia.
+          </p>
+        </div>
+
+        <Button
+          onClick={handleProofSubmit}
+          disabled={!proofFile || isProcessing}
+          className="w-full"
+          size="lg"
+        >
+          {isProcessing ? (
+            <>
+              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+              Enviando...
+            </>
+          ) : (
+            'Enviar comprobante'
+          )}
+        </Button>
+
+        <p className="text-[11px] text-center text-muted-foreground leading-relaxed">
+          Al enviar, tu orden pasa a <strong>revisión</strong>. Recibirás notificación por email y WhatsApp cuando se apruebe.
+        </p>
       </div>
     );
   }
@@ -349,9 +587,9 @@ export function PurchaseFlow() {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-2xl font-heading font-bold">Pago en revisión</h2>
+          <h2 className="text-2xl font-heading font-bold">Comprobante enviado</h2>
           <p className="text-muted-foreground font-body">
-            Tu pago está en proceso de verificación
+            Recibimos tu comprobante y está en revisión.
           </p>
         </div>
 
@@ -359,10 +597,10 @@ export function PurchaseFlow() {
           <AlertDescription className="font-body">
             <p className="font-semibold mb-2">¿Qué sigue?</p>
             <ul className="space-y-1 text-sm">
-              <li>• Nuestro equipo verificará tu transferencia</li>
-              <li>• Tus créditos se activarán en 1-2 horas hábiles</li>
-              <li>• Recibirás una confirmación por email</li>
-              <li>• Podrás reservar clases una vez activados los créditos</li>
+              <li>• Nuestro equipo verificará tu transferencia (1–2 hrs hábiles)</li>
+              <li>• Te notificamos por email y WhatsApp cuando se apruebe</li>
+              <li>• Tus créditos se activan automáticamente al aprobar</li>
+              <li>• Puedes consultar el estado en "Mis órdenes"</li>
             </ul>
           </AlertDescription>
         </Alert>
@@ -376,10 +614,10 @@ export function PurchaseFlow() {
             Volver al inicio
           </Button>
           <Button
-            onClick={() => navigate('/app/my-bookings')}
+            onClick={() => navigate('/app/orders')}
             className="flex-1"
           >
-            Ver mis reservas
+            Ver mis órdenes
           </Button>
         </div>
       </div>
