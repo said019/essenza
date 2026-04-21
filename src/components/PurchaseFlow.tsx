@@ -7,7 +7,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, Check, CreditCard, Building2, AlertCircle } from 'lucide-react';
+import { Loader2, Check, CreditCard, Building2, AlertCircle, Copy } from 'lucide-react';
 import api from '@/lib/api';
 
 interface Plan {
@@ -286,14 +286,35 @@ export function PurchaseFlow() {
         {paymentMethod === 'transfer' && (
           <Alert className="bg-info/10 border-info/30">
             <Building2 className="h-4 w-4 text-info" />
-            <AlertDescription className="text-foreground space-y-2">
-              <p className="font-semibold font-heading">Datos bancarios:</p>
-              <div className="space-y-1 text-sm font-body">
-                <p><strong>Banco:</strong> BBVA</p>
-                <p><strong>CLABE:</strong> 012 180 0123 4567 8901</p>
-                <p><strong>Titular:</strong> Essenza del Flusso SA de CV</p>
+            <AlertDescription className="text-foreground space-y-3">
+              <p className="font-semibold font-heading">Datos para transferencia:</p>
+              <div className="space-y-2 text-sm font-body">
+                <div className="flex items-center justify-between gap-2 rounded-md bg-background/60 px-3 py-2 border border-info/20">
+                  <div className="min-w-0">
+                    <p className="text-[10px] uppercase tracking-wider text-muted-foreground">CLABE</p>
+                    <p className="font-mono text-sm font-semibold break-all">722969010028531627</p>
+                  </div>
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="ghost"
+                    className="h-8 flex-shrink-0"
+                    onClick={() => {
+                      navigator.clipboard.writeText('722969010028531627');
+                      toast({ title: 'CLABE copiada', description: 'Ya puedes pegarla en tu banco' });
+                    }}
+                  >
+                    <Copy className="h-3.5 w-3.5" />
+                  </Button>
+                </div>
+                <p><strong>Beneficiario:</strong> Erika Novoa Campos</p>
+                <p><strong>Institución:</strong> Mercado Pago W</p>
                 <p><strong>Concepto:</strong> Membresía {selectedPlan?.name}</p>
               </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Al confirmar, envía tu comprobante por WhatsApp al <strong>55 7403 4312</strong>. Tus créditos
+                se activan en 1–2 horas hábiles.
+              </p>
             </AlertDescription>
           </Alert>
         )}
