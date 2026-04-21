@@ -20,7 +20,7 @@ INSERT INTO users (
     receive_weekly_summary
 ) VALUES (
     'admin@essenza.com',
-    '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/Ag2Q1xUCRxgn9O9DS', -- Admin123!
+    '$2a$12$ClifbKLKXy5b4SoC5IYJ2.fwRrCzVwHTU3EuojaNGE3eKUIcS8rhm', -- Admin123!
     'Administrador Essenza',
     '+525512345678',
     'admin',
@@ -45,7 +45,7 @@ INSERT INTO users (
     receive_weekly_summary
 ) VALUES (
     'usuario@essenza.com',
-    '$2a$12$8Y3f5L2mN9QrA3C7K1XsS.9j4H6G8L2mK5P9Q1XrA3C7K1XsS.9j4H', -- Usuario123!
+    '$2a$12$skFzvo8H8170Xzxq5622MOduVZTNjDXvWAtNa9WBnjZiQQIghDdqq', -- Usuario123!
     'Usuario de Prueba',
     '+525587654321',
     'client',
@@ -70,7 +70,7 @@ INSERT INTO users (
     receive_weekly_summary
 ) VALUES (
     'instructor@essenza.com',
-    '$2a$12$9Z4g6M3nO0RsB4D8L2YtT.0k5I7H9M3nL6Q0R2YsB4D8L2YtT.0k5I', -- Instructor123!
+    '$2a$12$0oY1.3qm5vBDDLBpoyVi8un51Nnz5VwaoXYSVoiGD/mA9ZDqDmzSC', -- Instructor123!
     'Instructor de Prueba',
     '+525598765432',
     'instructor',
