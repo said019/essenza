@@ -181,14 +181,14 @@ export default function WalletClub() {
                   {/* Subtle gold glow blob */}
                   <div
                     className="absolute -top-16 -left-16 w-64 h-64 rounded-full pointer-events-none"
-                    style={{ background: 'radial-gradient(circle, rgba(175,139,59,0.18) 0%, transparent 70%)' }}
+                    style={{ background: 'radial-gradient(circle, rgba(201,169,110,0.18) 0%, transparent 70%)' }}
                     aria-hidden="true"
                   />
 
                   <div className="relative z-10">
                     <p
                       className="text-[9px] font-label font-bold tracking-[0.28em] uppercase mb-5"
-                      style={{ color: 'rgba(175,139,59,0.7)' }}
+                      style={{ color: 'rgba(201,169,110,0.7)' }}
                     >
                       Essenza del Flusso · Membership Pass
                     </p>
@@ -218,7 +218,7 @@ export default function WalletClub() {
                       <div key={label}>
                         <p
                           className="text-[9px] font-label font-bold tracking-[0.18em] uppercase mb-1"
-                          style={{ color: 'rgba(175,139,59,0.6)' }}
+                          style={{ color: 'rgba(201,169,110,0.6)' }}
                         >
                           {label}
                         </p>
@@ -251,12 +251,12 @@ export default function WalletClub() {
                 {/* Right: QR + points */}
                 <div
                   className="p-8 md:p-10 flex flex-col items-center justify-center gap-6 border-t md:border-t-0 md:border-l"
-                  style={{ borderColor: 'rgba(175,139,59,0.15)' }}
+                  style={{ borderColor: 'rgba(201,169,110,0.15)' }}
                 >
                   <div className="text-center">
                     <p
                       className="text-[9px] font-label font-bold tracking-[0.2em] uppercase mb-1"
-                      style={{ color: 'rgba(175,139,59,0.6)' }}
+                      style={{ color: 'rgba(201,169,110,0.6)' }}
                     >
                       Check-in QR
                     </p>
@@ -273,16 +273,16 @@ export default function WalletClub() {
                     ) : (
                       <div
                         className="w-[132px] h-[132px] rounded-2xl flex flex-col items-center justify-center gap-2 mx-auto"
-                        style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(175,139,59,0.2)' }}
+                        style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(201,169,110,0.2)' }}
                       >
-                        <QrCode className="w-8 h-8" style={{ color: 'rgba(175,139,59,0.4)' }} />
+                        <QrCode className="w-8 h-8" style={{ color: 'rgba(201,169,110,0.4)' }} />
                         <p className="text-[9px] font-label" style={{ color: 'rgba(255,255,255,0.3)' }}>
                           Sin membresía
                         </p>
                       </div>
                     )}
                     {data?.membershipId && (
-                      <p className="mt-2 text-[9px] font-mono" style={{ color: 'rgba(175,139,59,0.4)' }}>
+                      <p className="mt-2 text-[9px] font-mono" style={{ color: 'rgba(201,169,110,0.4)' }}>
                         {data.membershipId.substring(0, 8).toUpperCase()}
                       </p>
                     )}
@@ -301,7 +301,7 @@ export default function WalletClub() {
               className={cn(
                 'flex items-center justify-between px-5 py-4 rounded-2xl border transition-all duration-200 group active:scale-[0.98]',
                 canDownloadPass
-                  ? 'border-primary/30 bg-surface-container-lowest hover:border-primary/60 hover:shadow-[0_4px_20px_-8px_rgba(175,139,59,0.25)]'
+                  ? 'border-primary/30 bg-surface-container-lowest hover:border-primary/60 hover:shadow-[0_4px_20px_-8px_rgba(201,169,110,0.25)]'
                   : 'border-essenza-outlineVariant/30 bg-surface-container-lowest opacity-50 cursor-not-allowed'
               )}
             >
@@ -323,7 +323,7 @@ export default function WalletClub() {
               className={cn(
                 'flex items-center justify-between px-5 py-4 rounded-2xl border transition-all duration-200 group active:scale-[0.98]',
                 canDownloadPass
-                  ? 'border-primary/30 bg-surface-container-lowest hover:border-primary/60 hover:shadow-[0_4px_20px_-8px_rgba(175,139,59,0.25)]'
+                  ? 'border-primary/30 bg-surface-container-lowest hover:border-primary/60 hover:shadow-[0_4px_20px_-8px_rgba(201,169,110,0.25)]'
                   : 'border-essenza-outlineVariant/30 bg-surface-container-lowest opacity-50 cursor-not-allowed'
               )}
             >
@@ -365,7 +365,7 @@ export default function WalletClub() {
               {/* Featured reward */}
               <Link
                 to="/app/wallet/rewards"
-                className="group flex items-center gap-5 p-5 rounded-2xl bg-surface-container-lowest border border-essenza-outlineVariant/40 hover:border-primary/30 hover:shadow-[0_8px_24px_-12px_rgba(175,139,59,0.2)] transition-all duration-300 active:scale-[0.99]"
+                className="group flex items-center gap-5 p-5 rounded-2xl bg-surface-container-lowest border border-essenza-outlineVariant/40 hover:border-primary/30 hover:shadow-[0_8px_24px_-12px_rgba(201,169,110,0.2)] transition-all duration-300 active:scale-[0.99]"
               >
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                   {(() => {

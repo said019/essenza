@@ -53,7 +53,7 @@ export default function AdminVideoUpload() {
         subtitle: '',
         tagline: '',
         days: '',
-        brand_color: '#8F9A8A',
+        brand_color: '#AEBFA6',
         sales_enabled: false,
         sales_unlocks_video: false,
         sales_price_mxn: 0,
@@ -97,7 +97,7 @@ export default function AdminVideoUpload() {
                 subtitle: videoData.subtitle || '',
                 tagline: videoData.tagline || '',
                 days: videoData.days || '',
-                brand_color: videoData.brand_color || '#8F9A8A',
+                brand_color: videoData.brand_color || '#AEBFA6',
                 sales_enabled: Boolean(videoData.sales_enabled),
                 sales_unlocks_video: Boolean(videoData.sales_unlocks_video),
                 sales_price_mxn: Number(videoData.sales_price_mxn || 0),
@@ -467,7 +467,7 @@ export default function AdminVideoUpload() {
                                                 <Input
                                                     value={formData.brand_color}
                                                     onChange={e => setFormData({ ...formData, brand_color: e.target.value })}
-                                                    placeholder="#8F9A8A"
+                                                    placeholder="#AEBFA6"
                                                     className="flex-1"
                                                 />
                                             </div>

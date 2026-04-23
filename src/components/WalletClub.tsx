@@ -22,7 +22,7 @@ const features = [
 
 const WalletClub = () => {
   return (
-    <section id="wallet" className="py-16 lg:py-20 bg-essenza-olive text-white">
+    <section id="wallet" className="py-16 lg:py-20 bg-essenza-blue text-on-surface">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-10 items-center">
           {/* Content - takes 2 cols */}
@@ -32,14 +32,14 @@ const WalletClub = () => {
               <br />
               <span className="font-semibold italic">en el bolsillo</span>
             </h2>
-            <p className="font-body text-sm text-white/75 mb-6 max-w-md mx-auto lg:mx-0">
+            <p className="font-body text-sm text-on-surface/70 mb-6 max-w-md mx-auto lg:mx-0">
               Pase digital, puntos y reservas desde tu teléfono. Sin plásticos ni filas.
             </p>
             <div className="flex gap-3 justify-center lg:justify-start">
               <Button
                 variant="secondary"
                 size="sm"
-                className="bg-white text-essenza-olive hover:bg-white/90 font-semibold"
+                className="bg-white text-on-surface hover:bg-white/90 font-semibold"
                 asChild
               >
                 <Link to="/app/wallet">Descargar pase</Link>
@@ -47,7 +47,7 @@ const WalletClub = () => {
               <Button
                 variant="heroOutline"
                 size="sm"
-                className="border-white/40 text-white hover:bg-white/10"
+                className="border-on-surface/30 text-on-surface hover:bg-white/20"
                 asChild
               >
                 <Link to="/app/wallet/rewards">Ver recompensas</Link>
@@ -60,13 +60,13 @@ const WalletClub = () => {
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="bg-white/5 border border-white/10 rounded-sm p-5 hover:bg-white/10 transition-colors"
+                className="bg-white/20 border border-white/35 rounded-sm p-5 hover:bg-white/30 transition-colors"
               >
-                <feature.icon className="w-7 h-7 text-white/80 mb-3" />
-                <h3 className="font-heading text-base font-semibold text-white mb-1">
+                <feature.icon className="w-7 h-7 text-on-surface/75 mb-3" />
+                <h3 className="font-heading text-base font-semibold text-on-surface mb-1">
                   {feature.title}
                 </h3>
-                <p className="font-body text-xs text-white/65 leading-relaxed">
+                <p className="font-body text-xs text-on-surface/65 leading-relaxed">
                   {feature.description}
                 </p>
               </div>

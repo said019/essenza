@@ -87,7 +87,7 @@ const plans = [
   },
 ];
 
-const WaveDivider = ({ flip = false, color = "#fbf9f6" }: { flip?: boolean; color?: string }) => (
+const WaveDivider = ({ flip = false, color = "#F7F7F5" }: { flip?: boolean; color?: string }) => (
   <div className={`wave-divider ${flip ? "rotate-180" : ""}`} aria-hidden="true">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -98,7 +98,7 @@ const WaveDivider = ({ flip = false, color = "#fbf9f6" }: { flip?: boolean; colo
   </div>
 );
 
-const WaveDividerLg = ({ flip = false, color = "#fbf9f6" }: { flip?: boolean; color?: string }) => (
+const WaveDividerLg = ({ flip = false, color = "#F7F7F5" }: { flip?: boolean; color?: string }) => (
   <div className={`wave-divider wave-divider-lg ${flip ? "rotate-180" : ""}`} aria-hidden="true">
     <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -191,7 +191,7 @@ const Index = () => {
         </div>
         <Link
           to="/register"
-          className="bg-primary text-white px-6 md:px-8 py-2.5 rounded-full font-label text-xs tracking-widest uppercase shadow-md hover:bg-essenza-goldLight transition-colors duration-300 active:scale-[0.98]"
+          className="bg-primary text-primary-foreground px-6 md:px-8 py-2.5 rounded-full font-label text-xs tracking-widest uppercase shadow-md hover:bg-essenza-blueLight transition-colors duration-300 active:scale-[0.98]"
         >
           Reservar
         </Link>
@@ -235,7 +235,7 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 items-center md:items-start">
             <Link
               to="/register"
-              className="bg-gradient-gold text-white px-8 md:px-10 py-4 rounded-full font-label uppercase tracking-[0.2em] text-[11px] hover:opacity-90 transition-opacity duration-300 shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface min-h-[44px]"
+              className="bg-gradient-gold text-on-surface px-8 md:px-10 py-4 rounded-full font-label uppercase tracking-[0.2em] text-[11px] hover:opacity-90 transition-opacity duration-300 shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface min-h-[44px]"
             >
               Reserva tu primera clase
             </Link>
@@ -249,7 +249,7 @@ const Index = () => {
         </div>
       </header>
 
-      <WaveDividerLg color="#fbf9f6" />
+      <WaveDividerLg color="#F7F7F5" />
 
       {/* ═══ Method ═══ */}
       <section id="method" ref={methodRef} className="py-24 md:py-40 px-6 bg-surface marble-overlay relative">
@@ -300,7 +300,7 @@ const Index = () => {
         </div>
       </section>
 
-      <WaveDivider color="#f5f3f0" />
+      <WaveDivider color="#F7F7F5" />
 
       {/* ═══ Schedule ═══ */}
       <section id="schedule" ref={scheduleRef} className="py-24 md:py-40 px-6 bg-surface-container-low marble-overlay">
@@ -332,21 +332,21 @@ const Index = () => {
             </div>
 
             {/* Especiales — única superficie acentuada por sección */}
-            <div data-reveal className="opacity-0 translate-y-8 bg-gradient-gold p-8 md:p-10 rounded-3xl text-white shadow-[0_24px_60px_-20px_rgba(175,139,59,0.45)] md:scale-[1.02] relative">
+            <div data-reveal className="opacity-0 translate-y-8 bg-gradient-gold p-8 md:p-10 rounded-3xl text-on-surface shadow-[0_24px_60px_-20px_rgba(201,169,110,0.42)] md:scale-[1.02] relative">
               <div className="flex items-baseline justify-between mb-8">
-                <h3 className="font-label uppercase tracking-[0.3em] text-[11px] font-semibold text-white">
+                <h3 className="font-label uppercase tracking-[0.3em] text-[11px] font-semibold text-on-surface">
                   Especiales
                 </h3>
-                <span className="text-[10px] uppercase tracking-widest text-white/80">Mediodía</span>
+                <span className="text-[10px] uppercase tracking-widest text-on-surface/70">Mediodía</span>
               </div>
               <ul className="space-y-4">
                 {specialSlots.map((t) => (
-                  <li key={t} className="flex items-baseline border-b border-white/25 pb-3 last:border-0">
+                  <li key={t} className="flex items-baseline border-b border-on-surface/20 pb-3 last:border-0">
                     <span className="font-headline text-lg">{t}</span>
                   </li>
                 ))}
               </ul>
-              <p className="mt-8 text-xs text-white/85 leading-relaxed">
+              <p className="mt-8 text-xs text-on-surface/75 leading-relaxed">
                 Cupos limitados. Reserva con anticipación.
               </p>
             </div>
@@ -377,7 +377,7 @@ const Index = () => {
 
       <ClassesCalendarPreview />
 
-      <WaveDividerLg flip color="#f5f3f0" />
+      <WaveDividerLg flip color="#F7F7F5" />
 
       {/* ═══ Membership ═══ */}
       <section id="membership" ref={membershipRef} className="py-24 md:py-40 px-6 relative overflow-hidden">
@@ -404,29 +404,29 @@ const Index = () => {
                 data-reveal
                 className={`opacity-0 translate-y-8 flex flex-col rounded-[2rem] p-7 md:p-8 transition-transform duration-500 ${
                   p.highlight
-                    ? "bg-gradient-gold text-white shadow-[0_30px_70px_-20px_rgba(175,139,59,0.45)] lg:scale-[1.05] z-10 relative"
+                    ? "bg-gradient-gold text-on-surface shadow-[0_30px_70px_-20px_rgba(201,169,110,0.42)] lg:scale-[1.05] z-10 relative"
                     : "bg-surface-container-lowest border border-essenza-outlineVariant/40 hover:-translate-y-1 hover:shadow-lg"
                 }`}
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
                 {p.highlight && p.badge && (
-                  <span className="absolute top-5 right-5 bg-white/20 text-white text-[9px] px-3 py-1 rounded-full backdrop-blur-md uppercase tracking-widest">
+                  <span className="absolute top-5 right-5 bg-white/30 text-on-surface text-[9px] px-3 py-1 rounded-full backdrop-blur-md uppercase tracking-widest">
                     {p.badge}
                   </span>
                 )}
-                <span className={`font-label text-[10px] uppercase tracking-[0.35em] mb-3 ${p.highlight ? "text-white/80" : "text-essenza-secondary"}`}>
+                <span className={`font-label text-[10px] uppercase tracking-[0.35em] mb-3 ${p.highlight ? "text-on-surface/70" : "text-essenza-secondary"}`}>
                   {p.label}
                 </span>
-                <h3 className={`font-headline text-2xl md:text-[1.75rem] mb-6 leading-tight ${p.highlight ? "text-white" : "text-on-surface"}`}>
+                <h3 className={`font-headline text-2xl md:text-[1.75rem] mb-6 leading-tight ${p.highlight ? "text-on-surface" : "text-on-surface"}`}>
                   {p.name}
                 </h3>
-                <div className={`text-4xl md:text-[2.75rem] font-headline mb-1 leading-none ${p.highlight ? "text-white" : "text-primary"}`}>
+                <div className={`text-4xl md:text-[2.75rem] font-headline mb-1 leading-none ${p.highlight ? "text-on-surface" : "text-primary"}`}>
                   {p.price}
                 </div>
-                <div className={`text-[10px] uppercase tracking-widest mb-7 ${p.highlight ? "text-white/70" : "text-essenza-secondary"}`}>
+                <div className={`text-[10px] uppercase tracking-widest mb-7 ${p.highlight ? "text-on-surface/65" : "text-essenza-secondary"}`}>
                   {p.unit}
                 </div>
-                <ul className={`text-sm space-y-2.5 mb-8 font-light flex-1 ${p.highlight ? "text-white/90" : "text-essenza-secondary"}`}>
+                <ul className={`text-sm space-y-2.5 mb-8 font-light flex-1 ${p.highlight ? "text-on-surface/75" : "text-essenza-secondary"}`}>
                   {p.features.map((f) => (
                     <li key={f}>{f}</li>
                   ))}
@@ -436,7 +436,7 @@ const Index = () => {
                   className={`block w-full text-center py-3.5 rounded-full font-label text-[10px] uppercase tracking-[0.3em] transition-colors duration-300 min-h-[44px] inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
                     p.highlight
                       ? "bg-white text-primary hover:bg-essenza-cream shadow-md focus-visible:ring-white"
-                      : "border border-primary/30 text-on-surface hover:bg-primary hover:text-white hover:border-primary focus-visible:ring-primary"
+                      : "border border-primary/30 text-on-surface hover:bg-primary hover:text-primary-foreground hover:border-primary focus-visible:ring-primary"
                   }`}
                 >
                   {p.cta}
@@ -447,7 +447,7 @@ const Index = () => {
         </div>
       </section>
 
-      <WaveDivider color="#fbf9f6" />
+      <WaveDivider color="#F7F7F5" />
 
       {/* ═══ Testimonial ═══ */}
       <section ref={testimonialRef} className="py-28 md:py-40 px-6 bg-surface marble-overlay overflow-hidden text-center relative">
@@ -577,7 +577,7 @@ const Index = () => {
       </section>
 
       {/* ═══ Footer ═══ */}
-      <footer className="w-full py-16 md:py-20 px-6 md:px-12 bg-surface-container-highest">
+      <footer className="w-full py-16 md:py-20 px-6 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-start gap-10 md:gap-6">
           <div className="flex flex-col items-center md:items-start gap-3">
             <Link to="/">

@@ -19,7 +19,7 @@ function formatTime(t: string) {
 }
 
 function ClassRow({ klass, featured = false }: { klass: Class; featured?: boolean }) {
-    const accent = klass.class_type_color || '#af8b3b';
+    const accent = klass.class_type_color || '#C9A96E';
     const full = (klass.current_bookings ?? 0) >= klass.max_capacity;
     const spots = klass.max_capacity - (klass.current_bookings ?? 0);
 
@@ -27,7 +27,7 @@ function ClassRow({ klass, featured = false }: { klass: Class; featured?: boolea
         <Link
             to={loginReturnUrl}
             className={cn(
-                'group relative block rounded-3xl border border-essenza-outlineVariant/40 bg-surface-container-lowest overflow-hidden transition-all duration-300 hover:border-primary/30 hover:shadow-[0_20px_50px_-24px_rgba(175,139,59,0.3)] active:scale-[0.99]',
+                'group relative block rounded-3xl border border-essenza-outlineVariant/40 bg-surface-container-lowest overflow-hidden transition-all duration-300 hover:border-primary/30 hover:shadow-[0_20px_50px_-24px_rgba(201,169,110,0.26)] active:scale-[0.99]',
                 featured ? 'p-6 md:p-8' : 'p-5'
             )}
         >
@@ -138,7 +138,7 @@ export function ClassesCalendarPreview() {
                     </div>
                     <Link
                         to={loginReturnUrl}
-                        className="inline-flex items-center gap-2 self-start md:self-end rounded-full border border-primary/30 bg-primary/5 px-5 py-2.5 text-sm font-semibold text-primary hover:bg-primary hover:text-white transition-colors"
+                        className="inline-flex items-center gap-2 self-start md:self-end rounded-full border border-primary/30 bg-primary/5 px-5 py-2.5 text-sm font-semibold text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
                     >
                         Ver todas
                         <ArrowRight className="h-4 w-4" />
@@ -166,19 +166,19 @@ export function ClassesCalendarPreview() {
                                 className={cn(
                                     'snap-start flex-shrink-0 flex flex-col items-center justify-center gap-1 min-w-[72px] md:min-w-[92px] rounded-2xl border px-4 py-3 md:py-4 transition-all duration-300',
                                     active
-                                        ? 'border-primary bg-primary text-white shadow-[0_18px_40px_-20px_rgba(175,139,59,0.55)]'
+                                        ? 'border-primary bg-primary text-primary-foreground shadow-[0_18px_40px_-20px_rgba(175,200,214,0.55)]'
                                         : past
                                             ? 'border-essenza-outlineVariant/30 bg-surface-container-lowest text-foreground/30 cursor-not-allowed'
                                             : 'border-essenza-outlineVariant/50 bg-surface-container-lowest text-foreground hover:border-primary/40 hover:-translate-y-0.5 active:scale-[0.98]'
                                 )}
                             >
-                                <span className={cn('text-[10px] font-semibold uppercase tracking-[0.2em]', active ? 'text-white/85' : 'text-essenza-secondary')}>
+                                <span className={cn('text-[10px] font-semibold uppercase tracking-[0.2em]', active ? 'text-primary-foreground/75' : 'text-essenza-secondary')}>
                                     {getDayLabel(day)}
                                 </span>
                                 <span className={cn('font-headline text-2xl leading-none', isToday(day) && !active && 'text-primary')}>
                                     {format(day, 'd')}
                                 </span>
-                                <span className={cn('text-[10px] uppercase tracking-wider', active ? 'text-white/75' : 'text-essenza-secondary/70')}>
+                                <span className={cn('text-[10px] uppercase tracking-wider', active ? 'text-primary-foreground/65' : 'text-essenza-secondary/70')}>
                                     {count > 0 ? `${count} clase${count === 1 ? '' : 's'}` : '—'}
                                 </span>
                             </button>

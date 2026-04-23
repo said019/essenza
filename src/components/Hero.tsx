@@ -39,7 +39,7 @@ const Hero = () => {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-3 animate-fade-up delay-200">
-              <Button variant="hero" size="xl" asChild className="bg-essenza-olive hover:bg-essenza-olive/90 w-full sm:w-auto text-center justify-center">
+              <Button variant="hero" size="xl" asChild className="bg-gradient-gold text-on-surface hover:opacity-90 w-full sm:w-auto text-center justify-center">
                 <a href="#precios">Prueba tu primera clase — $150</a>
               </Button>
               <Button

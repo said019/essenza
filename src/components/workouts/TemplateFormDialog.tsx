@@ -327,7 +327,7 @@ export function TemplateFormDialog({
                                             variant={isSelected ? 'default' : 'outline'}
                                             className={`cursor-pointer rounded-lg font-body text-xs transition-all ${
                                                 isSelected
-                                                    ? 'bg-essenza-gold hover:bg-essenza-gold/90 text-white border-essenza-gold'
+                                                    ? 'bg-essenza-gold hover:bg-essenza-gold/90 text-on-surface border-essenza-gold'
                                                     : 'hover:border-essenza-gold/50 hover:text-essenza-gold'
                                             }`}
                                             onClick={() => {

@@ -252,7 +252,7 @@ export default function Schedule() {
                   className={`
                     flex-shrink-0 min-w-[52px] sm:min-w-0 sm:flex-1 flex flex-col items-center py-3 sm:py-4 rounded-2xl transition-all duration-300
                     ${isSelected
-                      ? 'bg-essenza-gold text-white shadow-lg shadow-essenza-gold/20 scale-[1.03]'
+                      ? 'bg-essenza-gold text-on-surface shadow-lg shadow-essenza-gold/20 scale-[1.03]'
                       : dayIsToday && !isSelected
                         ? 'bg-essenza-gold/10 border border-essenza-gold/30 cursor-pointer hover:bg-essenza-gold/20'
                         : dayIsPast
@@ -263,14 +263,14 @@ export default function Schedule() {
                 >
                   <span
                     className={`text-[9px] sm:text-[10px] font-semibold tracking-[1.5px] uppercase font-body ${
-                      isSelected ? 'text-white/80' : dayIsToday ? 'text-essenza-gold/70' : 'text-white/35'
+                      isSelected ? 'text-on-surface/70' : dayIsToday ? 'text-essenza-gold/70' : 'text-white/35'
                     }`}
                   >
                     {format(day, 'EEE', { locale: es })}
                   </span>
                   <span
                     className={`text-xl sm:text-2xl font-extrabold leading-tight mt-0.5 ${
-                      isSelected ? 'text-white' : dayIsToday ? 'text-essenza-gold' : 'text-white/80'
+                      isSelected ? 'text-on-surface' : dayIsToday ? 'text-essenza-gold' : 'text-white/80'
                     }`}
                   >
                     {format(day, 'd')}
@@ -282,14 +282,14 @@ export default function Schedule() {
                         <div
                           key={i}
                           className={`w-1 h-1 rounded-full ${
-                            isSelected ? 'bg-white/60' : dayIsToday ? 'bg-essenza-gold/50' : 'bg-essenza-sand/30'
+                            isSelected ? 'bg-on-surface/45' : dayIsToday ? 'bg-essenza-gold/50' : 'bg-essenza-sand/30'
                           }`}
                         />
                       ))}
                       {count > 4 && (
                         <span
                           className={`text-[7px] font-bold leading-[4px] ${
-                            isSelected ? 'text-white/60' : 'text-essenza-sand/30'
+                            isSelected ? 'text-on-surface/55' : 'text-essenza-sand/30'
                           }`}
                         >
                           +
@@ -325,7 +325,7 @@ export default function Schedule() {
               onClick={() => setFilter('all')}
               className={`shrink-0 px-5 py-2 rounded-full text-xs font-semibold font-body transition-all ${
                 filter === 'all'
-                  ? 'bg-essenza-gold text-white shadow-sm'
+                  ? 'bg-essenza-gold text-on-surface shadow-sm'
                   : 'bg-card text-muted-foreground border border-border hover:border-essenza-gold/40 hover:text-essenza-gold'
               }`}
             >
@@ -337,7 +337,7 @@ export default function Schedule() {
                 onClick={() => setFilter(type)}
                 className={`shrink-0 px-5 py-2 rounded-full text-xs font-semibold font-body transition-all ${
                   filter === type
-                    ? 'bg-essenza-gold text-white shadow-sm'
+                    ? 'bg-essenza-gold text-on-surface shadow-sm'
                     : 'bg-card text-muted-foreground border border-border hover:border-essenza-gold/40 hover:text-essenza-gold'
                 }`}
               >
@@ -434,7 +434,7 @@ export default function Schedule() {
                       ) : (
                         <button
                           onClick={() => handleBook(cls)}
-                          className="shrink-0 px-5 py-2.5 rounded-xl bg-essenza-gold text-white text-xs font-bold font-body
+                          className="shrink-0 px-5 py-2.5 rounded-xl bg-essenza-gold text-on-surface text-xs font-bold font-body
                                      hover:bg-essenza-gold/90 active:scale-[0.97] transition-all shadow-sm"
                         >
                           Reservar
@@ -491,7 +491,7 @@ export default function Schedule() {
             {filter !== 'all' && (
               <button
                 onClick={() => setFilter('all')}
-                className="mt-3 px-5 py-2 rounded-xl bg-essenza-gold text-white text-xs font-semibold font-body hover:bg-essenza-gold/90 transition-all"
+                className="mt-3 px-5 py-2 rounded-xl bg-essenza-gold text-on-surface text-xs font-semibold font-body hover:bg-essenza-gold/90 transition-all"
               >
                 Ver todas
               </button>
@@ -509,10 +509,10 @@ export default function Schedule() {
           </p>
           <Link
             to="/register?returnUrl=/app/book"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-essenza-gold text-white rounded-xl text-sm font-semibold font-body hover:bg-essenza-gold/90 transition-all shadow-md hover:shadow-lg"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-essenza-gold text-on-surface rounded-xl text-sm font-semibold font-body hover:bg-essenza-gold/90 transition-all shadow-md hover:shadow-lg"
           >
             Reservar clase de prueba
-            <span className="text-white/70 font-normal">$150</span>
+            <span className="text-on-surface/65 font-normal">$150</span>
           </Link>
         </div>
       </div>

@@ -502,7 +502,7 @@ Son **dos capas independientes**:
   subtitle?: string
   tagline?: string
   days?: string
-  brand_color?: string         // hex ej. "#8F9A8A"
+  brand_color?: string         // hex ej. "#AEBFA6"
   level: "principiante" | "intermedio" | "avanzado" | "todos"
   category_id: string
 

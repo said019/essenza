@@ -87,7 +87,7 @@ const VideoGallery = () => {
         thumbnail: v.thumbnail_url || '',
         videoUrl: v.video_url || '',
         embedUrl: v.embed_url || '',
-        color: v.brand_color || v.category_color || '#8F9A8A',
+        color: v.brand_color || v.category_color || '#AEBFA6',
         days: v.days || '',
       }))
     : fallbackVideos;

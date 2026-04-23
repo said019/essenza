@@ -92,7 +92,7 @@ export function InstallAppCard() {
                 <Button
                     type="button"
                     onClick={handleAndroidInstall}
-                    className="w-full rounded-xl bg-primary text-white hover:bg-primary/90 active:scale-[0.98] transition-transform"
+                    className="w-full rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 active:scale-[0.98] transition-transform"
                 >
                     <Download className="mr-2 h-4 w-4" />
                     {deferredPrompt ? 'Instalar app' : 'Ver cómo instalar'}
@@ -103,7 +103,7 @@ export function InstallAppCard() {
                 <button
                     type="button"
                     onClick={() => setExpanded((v) => (v === 'ios' ? null : 'ios'))}
-                    className="w-full rounded-xl bg-primary text-white py-2.5 text-sm font-semibold hover:bg-primary/90 active:scale-[0.98] transition-transform flex items-center justify-center gap-2"
+                    className="w-full rounded-xl bg-primary text-primary-foreground py-2.5 text-sm font-semibold hover:bg-primary/90 active:scale-[0.98] transition-transform flex items-center justify-center gap-2"
                 >
                     <Download className="h-4 w-4" />
                     {expanded === 'ios' ? 'Ocultar instrucciones' : 'Cómo instalar en iPhone'}
@@ -117,7 +117,7 @@ export function InstallAppCard() {
                         onClick={() => setExpanded((v) => (v === 'ios' ? null : 'ios'))}
                         className={`rounded-xl border text-xs font-semibold py-2.5 px-3 transition-colors ${
                             expanded === 'ios'
-                                ? 'border-primary bg-primary text-white'
+                                ? 'border-primary bg-primary text-primary-foreground'
                                 : 'border-primary/20 bg-white text-foreground hover:border-primary/40'
                         }`}
                     >
@@ -128,7 +128,7 @@ export function InstallAppCard() {
                         onClick={() => setExpanded((v) => (v === 'android' ? null : 'android'))}
                         className={`rounded-xl border text-xs font-semibold py-2.5 px-3 transition-colors ${
                             expanded === 'android'
-                                ? 'border-primary bg-primary text-white'
+                                ? 'border-primary bg-primary text-primary-foreground'
                                 : 'border-primary/20 bg-white text-foreground hover:border-primary/40'
                         }`}
                     >

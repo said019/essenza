@@ -104,7 +104,7 @@ export default function Login() {
                         <h2 className="font-headline text-white text-3xl font-light leading-snug mb-4">
                             Donde el movimiento<br />
                             se convierte en{' '}
-                            <em style={{ color: '#d1b16b' }}>ritual.</em>
+                            <em style={{ color: '#D8C08A' }}>ritual.</em>
                         </h2>
                         <p className="text-white/55 text-sm font-light leading-relaxed">
                             Pilates Reformer Studio

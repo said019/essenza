@@ -275,7 +275,7 @@ export default function ClientDetail() {
                             />
 
                             <Button 
-                                className="rounded-xl font-body bg-essenza-gold hover:bg-essenza-gold/90 text-white shadow-sm"
+                                className="rounded-xl font-body bg-essenza-gold hover:bg-essenza-gold/90 text-on-surface shadow-sm"
                                 onClick={() => navigate(`/admin/members/${id}/physical-sale`)}
                             >
                                 <DollarSign className="mr-2 h-4 w-4" />
@@ -463,9 +463,9 @@ export default function ClientDetail() {
                         <div className="md:col-span-8 lg:col-span-9 space-y-6">
                             <Tabs defaultValue="memberships">
                                 <TabsList className="rounded-xl bg-muted/50">
-                                    <TabsTrigger value="memberships" className="rounded-lg font-body data-[state=active]:bg-essenza-gold data-[state=active]:text-white">Membresias</TabsTrigger>
-                                    <TabsTrigger value="history" className="rounded-lg font-body data-[state=active]:bg-essenza-gold data-[state=active]:text-white">Historial Clases</TabsTrigger>
-                                    <TabsTrigger value="notes" className="rounded-lg font-body data-[state=active]:bg-essenza-gold data-[state=active]:text-white">Notas Internas</TabsTrigger>
+                                    <TabsTrigger value="memberships" className="rounded-lg font-body data-[state=active]:bg-essenza-gold data-[state=active]:text-on-surface">Membresias</TabsTrigger>
+                                    <TabsTrigger value="history" className="rounded-lg font-body data-[state=active]:bg-essenza-gold data-[state=active]:text-on-surface">Historial Clases</TabsTrigger>
+                                    <TabsTrigger value="notes" className="rounded-lg font-body data-[state=active]:bg-essenza-gold data-[state=active]:text-on-surface">Notas Internas</TabsTrigger>
                                 </TabsList>
 
                                 {/* Memberships Tab */}
@@ -704,7 +704,7 @@ export default function ClientDetail() {
                                 <Button
                                     type="submit"
                                     disabled={updateProfileMutation.isPending}
-                                    className="rounded-xl font-body bg-essenza-gold hover:bg-essenza-gold/90 text-white"
+                                    className="rounded-xl font-body bg-essenza-gold hover:bg-essenza-gold/90 text-on-surface"
                                 >
                                     {updateProfileMutation.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                                     Guardar Cambios

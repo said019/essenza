@@ -217,7 +217,7 @@ export default function CoachTemplates() {
                             </div>
                             <Button 
                                 onClick={handleCreateNew}
-                                className="bg-essenza-gold hover:bg-essenza-gold/90 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 font-body"
+                                className="bg-essenza-gold hover:bg-essenza-gold/90 text-on-surface rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 font-body"
                             >
                                 <Plus className="mr-2 h-4 w-4" />
                                 Nueva Plantilla
@@ -263,13 +263,13 @@ export default function CoachTemplates() {
                     {/* Tabs */}
                     <Tabs value={activeTab} onValueChange={setActiveTab}>
                         <TabsList className="bg-muted/50 rounded-xl p-1">
-                            <TabsTrigger value="all" className="rounded-lg font-body text-sm data-[state=active]:bg-essenza-gold data-[state=active]:text-white">
+                            <TabsTrigger value="all" className="rounded-lg font-body text-sm data-[state=active]:bg-essenza-gold data-[state=active]:text-on-surface">
                                 Todas
                             </TabsTrigger>
-                            <TabsTrigger value="my" className="rounded-lg font-body text-sm data-[state=active]:bg-essenza-gold data-[state=active]:text-white">
+                            <TabsTrigger value="my" className="rounded-lg font-body text-sm data-[state=active]:bg-essenza-gold data-[state=active]:text-on-surface">
                                 Mis Plantillas
                             </TabsTrigger>
-                            <TabsTrigger value="favorites" className="rounded-lg font-body text-sm data-[state=active]:bg-essenza-gold data-[state=active]:text-white">
+                            <TabsTrigger value="favorites" className="rounded-lg font-body text-sm data-[state=active]:bg-essenza-gold data-[state=active]:text-on-surface">
                                 Favoritos
                             </TabsTrigger>
                         </TabsList>

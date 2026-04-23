@@ -113,15 +113,15 @@ export default function ClientDashboard() {
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
             <Link
               to="/app/book"
-              className="lg:col-span-2 flex items-center justify-between p-6 bg-primary text-white rounded-2xl hover:scale-[1.02] hover:shadow-lg transition-all duration-300 group shadow-md shadow-primary/20"
+              className="lg:col-span-2 flex items-center justify-between p-6 bg-primary text-primary-foreground rounded-2xl hover:scale-[1.02] hover:shadow-lg transition-all duration-300 group shadow-md shadow-primary/20"
             >
               <div className="text-left">
-                <p className="text-[10px] font-bold tracking-[0.1em] text-primary-fixed-dim mb-1">
+                <p className="text-[10px] font-bold tracking-[0.1em] text-primary-foreground/65 mb-1">
                   MOVIMIENTO
                 </p>
                 <h2 className="text-xl font-headline font-bold">Reservar clase</h2>
               </div>
-              <div className="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center group-hover:bg-white/25 transition-colors">
+              <div className="w-12 h-12 rounded-full bg-white/35 flex items-center justify-center group-hover:bg-white/50 transition-colors">
                 <CalendarDays className="h-5 w-5" />
               </div>
             </Link>
@@ -225,7 +225,7 @@ export default function ClientDashboard() {
                 </div>
                 <Link
                   to="/app/book"
-                  className="px-7 py-3 bg-primary text-white font-semibold rounded-full hover:bg-essenza-goldLight transition-colors text-xs uppercase tracking-widest"
+                  className="px-7 py-3 bg-primary text-primary-foreground font-semibold rounded-full hover:bg-essenza-blueLight transition-colors text-xs uppercase tracking-widest"
                 >
                   Reservar ahora
                 </Link>
@@ -274,7 +274,7 @@ function MembershipCard({
   const hasMembership = !!membership && !isExpiredOrCancelled;
 
   return (
-    <section className="bg-surface-container-lowest rounded-2xl p-6 border border-essenza-outlineVariant/40 shadow-[0px_10px_32px_rgba(175,139,59,0.06)] flex flex-col gap-6">
+    <section className="bg-surface-container-lowest rounded-2xl p-6 border border-essenza-outlineVariant/40 shadow-[0px_10px_32px_rgba(201,169,110,0.06)] flex flex-col gap-6">
       <div className="flex items-center gap-4">
         <div className="w-12 h-12 rounded-full bg-primary/15 flex items-center justify-center text-primary flex-shrink-0">
           <Sparkles className="h-5 w-5" />
@@ -331,7 +331,7 @@ function MembershipCard({
 
       <Link
         to="/app/checkout"
-        className="w-full sm:w-auto self-start px-6 py-3 bg-gradient-to-r from-primary to-essenza-goldLight text-white font-semibold rounded-full hover:scale-[1.02] transition-transform shadow-lg shadow-primary/20 text-sm tracking-wide text-center"
+        className="w-full sm:w-auto self-start px-6 py-3 bg-gradient-to-r from-primary to-essenza-goldLight text-on-surface font-semibold rounded-full hover:scale-[1.02] transition-transform shadow-lg shadow-primary/20 text-sm tracking-wide text-center"
       >
         {hasMembership ? 'Agregar más clases' : 'Comprar primer pack'}
       </Link>

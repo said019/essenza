@@ -196,7 +196,7 @@ const Navbar = () => {
                     Hola, {user?.display_name?.split(' ')[0]}
                   </Link>
                 </Button>
-                <Button variant="hero" size="lg" asChild className="bg-essenza-olive hover:bg-essenza-olive/90">
+                <Button variant="hero" size="lg" asChild className="bg-gradient-gold text-on-surface hover:opacity-90">
                   <a href="#horarios">Reservar Ahora</a>
                 </Button>
               </>
@@ -207,7 +207,7 @@ const Navbar = () => {
                     <User className="w-5 h-5" />
                   </Link>
                 </Button>
-                <Button variant="hero" size="lg" asChild className="bg-essenza-olive hover:bg-essenza-olive/90">
+                <Button variant="hero" size="lg" asChild className="bg-gradient-gold text-on-surface hover:opacity-90">
                   <Link to="/login">Iniciar Sesión</Link>
                 </Button>
               </>
@@ -340,7 +340,7 @@ const Navbar = () => {
             <Button 
               variant="hero" 
               size="lg" 
-              className="w-full bg-white text-essenza-olive hover:bg-white/90 font-semibold text-base h-12 rounded-xl shadow-lg" 
+              className="w-full bg-white text-on-surface hover:bg-white/90 font-semibold text-base h-12 rounded-xl shadow-lg" 
               asChild
             >
               <a href="#horarios" onClick={() => setIsMobileMenuOpen(false)}>

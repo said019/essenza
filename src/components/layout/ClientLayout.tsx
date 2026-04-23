@@ -117,7 +117,7 @@ export function ClientLayout({ children }: ClientLayoutProps) {
                                 >
                                     <Avatar className="h-9 w-9">
                                         <AvatarImage src={user?.photo_url || undefined} alt={user?.display_name} />
-                                        <AvatarFallback className="bg-primary text-white font-semibold text-sm">
+                                        <AvatarFallback className="bg-primary text-primary-foreground font-semibold text-sm">
                                             {user?.display_name ? getInitials(user.display_name) : 'U'}
                                         </AvatarFallback>
                                     </Avatar>
@@ -159,7 +159,7 @@ export function ClientLayout({ children }: ClientLayoutProps) {
 
             {/* ═══ Bottom Nav — solo móvil ═══ */}
             <nav
-                className="md:hidden fixed bottom-0 left-0 w-full z-50 rounded-t-[2rem] bg-surface/80 backdrop-blur-2xl shadow-[0px_-20px_40px_rgba(175,139,59,0.08)] border-t border-essenza-outlineVariant/30"
+                className="md:hidden fixed bottom-0 left-0 w-full z-50 rounded-t-[2rem] bg-surface/80 backdrop-blur-2xl shadow-[0px_-20px_40px_rgba(201,169,110,0.08)] border-t border-essenza-outlineVariant/30"
                 style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
             >
                 <div className="flex justify-around items-center px-4 pt-2 pb-3 w-full max-w-2xl mx-auto">

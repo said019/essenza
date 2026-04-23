@@ -165,14 +165,14 @@ const Pricing = () => {
         </div>
 
         {/* First Time Banner */}
-        <div className="bg-essenza-gold text-white rounded-xl sm:rounded-sm p-6 lg:p-8 mb-12 flex flex-col lg:flex-row items-center justify-between gap-6 text-center lg:text-left">
+        <div className="bg-essenza-gold text-on-surface rounded-xl sm:rounded-sm p-6 lg:p-8 mb-12 flex flex-col lg:flex-row items-center justify-between gap-6 text-center lg:text-left">
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <Star className="w-10 h-10 sm:w-12 sm:h-12 shrink-0" />
             <div>
               <h3 className="font-heading text-2xl font-semibold">
                 ¿Primera vez en Essenza?
               </h3>
-              <p className="font-body text-white/80">
+              <p className="font-body text-on-surface/70">
                 Sesión muestra por $150 · Inscripción anual $500
               </p>
             </div>
@@ -181,7 +181,7 @@ const Pricing = () => {
             <span className="font-heading text-3xl font-bold">$150</span>
             <Button
               size="lg"
-              className="bg-white text-essenza-gold hover:bg-white/90 font-semibold"
+              className="bg-white text-on-surface hover:bg-white/90 font-semibold"
               asChild
             >
               <Link to="/register?returnUrl=/app/book">Reservar clase de prueba</Link>
@@ -203,7 +203,7 @@ const Pricing = () => {
                 } p-6 flex flex-col`}
               >
                 {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-essenza-olive text-white px-4 py-1 rounded-full text-xs font-body tracking-wide whitespace-nowrap">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-essenza-olive text-on-surface px-4 py-1 rounded-full text-xs font-body tracking-wide whitespace-nowrap">
                     Más Popular
                   </div>
                 )}
@@ -276,7 +276,7 @@ const Pricing = () => {
               } p-8 flex flex-col`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-essenza-olive text-white px-4 py-1 rounded-full text-xs font-body tracking-wide">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-essenza-olive text-on-surface px-4 py-1 rounded-full text-xs font-body tracking-wide">
                   Más Popular
                 </div>
               )}

@@ -101,7 +101,7 @@ export default function AdminDashboard() {
                         {/* Animated wave line */}
                         <div className="absolute inset-0 opacity-10 overflow-hidden rounded-2xl">
                             <svg className="w-full h-full" viewBox="0 0 800 200" preserveAspectRatio="none">
-                                <path d="M0,100 Q200,60 400,100 T800,100" fill="none" stroke="rgba(175,139,59,0.4)" strokeWidth="1">
+                                <path d="M0,100 Q200,60 400,100 T800,100" fill="none" stroke="rgba(201,169,110,0.4)" strokeWidth="1">
                                     <animate attributeName="d" dur="8s" repeatCount="indefinite"
                                         values="M0,100 Q200,60 400,100 T800,100;M0,100 Q200,140 400,100 T800,100;M0,100 Q200,60 400,100 T800,100" />
                                 </path>
@@ -175,7 +175,7 @@ export default function AdminDashboard() {
                                 icon: Calendar,
                                 color: 'bg-essenza-gold/10 text-essenza-gold',
                                 border: 'border-essenza-gold/20',
-                                glow: 'hover:shadow-[0_8px_30px_rgba(175,139,59,0.12)]',
+                                glow: 'hover:shadow-[0_8px_30px_rgba(201,169,110,0.12)]',
                             },
                             {
                                 title: 'Reservas',
